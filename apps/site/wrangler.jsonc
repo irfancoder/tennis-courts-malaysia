@@ -1,0 +1,40 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tennis-site",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "routes": [{ "pattern": "tennis.irfanismail.com", "custom_domain": true }],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tennis-submissions",
+      "database_id": "d117253e-fbfd-4ab2-9a05-65fcea1403de",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "SUBMIT_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ],
+  "send_email": [
+    {
+      "name": "NOTIFY",
+      "destination_address": "irfan.ismail96@gmail.com"
+    }
+  ],
+  "vars": {
+    "NOTIFY_FROM": "courts@irfanismail.com",
+    "NOTIFY_TO": "irfan.ismail96@gmail.com"
+  },
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,30 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { s } from "./Breadcrumbs.styles";
+
+interface Props {
+  items: { href?: string; label: string }[];
+}
+const { items } = Astro.props;
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.label,
+    item: item.href ? new URL(item.href, Astro.site).toString() : undefined,
+  })),
+};
+---
+<nav aria-label="Breadcrumb" {...stylex.props(s.nav)}>
+  <ol {...stylex.props(s.list)}>
+    {items.map((item, i) => (
+      <li {...stylex.props(s.item)}>
+        {i > 0 && <span {...stylex.props(s.sep)} aria-hidden="true">/</span>}
+        {item.href ? <a href={item.href} {...stylex.props(s.link)}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+      </li>
+    ))}
+  </ol>
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+</nav>

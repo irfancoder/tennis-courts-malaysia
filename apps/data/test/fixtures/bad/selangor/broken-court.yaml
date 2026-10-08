@@ -1,0 +1,22 @@
+name: Broken Court
+category: council
+location:
+  address: Somewhere
+  state: penang
+  city: Petaling Jaya
+  lat: 3.1
+  lng: 101.6
+courts:
+  - count: 2
+access:
+  type: open_online
+booking:
+  channels:
+    - type: portal
+      url: https://example.com
+      guide: no-such-guide
+pricing:
+  day: cheap
+verified:
+  date: 2026-10-07
+  source: visited

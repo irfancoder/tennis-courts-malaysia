@@ -1,0 +1,110 @@
+import { mkdtemp, readFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { DuckDBInstance } from "@duckdb/node-api";
+import type { ParquetManifest } from "@tennis/schema";
+import { describe, expect, it } from "vitest";
+import { deriveVenue, priceBand, regionFor } from "../src/derive";
+import { loadVenueFiles } from "../src/load";
+import { runPipeline } from "../src/pipeline";
+import type { ResolvedVenue } from "../src/resolve";
+import { validateVenues } from "../src/validate";
+
+const here = (p: string) => fileURLToPath(new URL(p, import.meta.url));
+const TODAY = new Date("2026-10-07T00:00:00Z");
+
+describe("validation", () => {
+  it("accepts every seed venue", async () => {
+    const { venues, errors } = validateVenues(await loadVenueFiles(here("../venues")));
+    expect(errors).toEqual([]);
+    expect(venues.length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("reports readable file + path errors", async () => {
+    const raws = await loadVenueFiles(here("./fixtures/bad"));
+    const { errors } = validateVenues(raws, { knownGuides: new Set(["dbkl"]) });
+    expect(errors).toContainEqual(
+      expect.objectContaining({ file: "selangor/broken-court.yaml", path: "pricing.day" }),
+    );
+
+    // Schema errors short-circuit cross-checks, so fix pricing and re-check the rest.
+    const fixed = raws.map((r) => ({
+      ...r,
+      data: { ...(r.data as object), pricing: { day: 10 } },
+    }));
+    const second = validateVenues(fixed, { knownGuides: new Set(["dbkl"]) }).errors;
+    expect(second.map((e) => e.path)).toEqual(
+      expect.arrayContaining(["location.state", "booking.channels.0.guide"]),
+    );
+  });
+
+  it("asks for a Google Maps link or coordinates", async () => {
+    const [raw] = await loadVenueFiles(here("../venues/selangor"));
+    if (!raw) throw new Error("no seed venue");
+    const data = raw.data as { location: Record<string, unknown> };
+    const { googleMaps: _, ...noPlace } = data.location;
+    const { errors } = validateVenues([{ ...raw, data: { ...data, location: noPlace } }]);
+    expect(errors).toContainEqual(
+      expect.objectContaining({
+        path: "location",
+        message: "Add a googleMaps link, or both lat and lng",
+      }),
+    );
+  });
+});
+
+describe("derive", () => {
+  it("flags venues verified more than 12 months ago as stale", async () => {
+    const { venues } = validateVenues(await loadVenueFiles(here("../venues")));
+    const first = venues[0];
+    if (!first) throw new Error("no venues");
+    const current: ResolvedVenue = {
+      ...first,
+      venue: { ...first.venue, location: { ...first.venue.location, lat: 3.1, lng: 101.6 } },
+    };
+    const old: ResolvedVenue = {
+      ...current,
+      venue: { ...current.venue, verified: { ...current.venue.verified, date: "2025-09-01" } },
+    };
+    expect(deriveVenue(old, TODAY).isStale).toBe(true);
+    expect(deriveVenue(current, TODAY).isStale).toBe(false);
+  });
+
+  it("maps regions and price bands", () => {
+    expect(regionFor("selangor", "shah-alam")).toBe("klang-valley");
+    expect(regionFor("kedah", "langkawi")).toBe("langkawi");
+    expect(regionFor("kedah", "alor-setar")).toBe("other");
+    expect(priceBand(10, 20)).toBe("budget");
+    expect(priceBand(undefined, 45)).toBe("mid");
+    expect(priceBand(120)).toBe("premium");
+    expect(priceBand()).toBe("unknown");
+  });
+});
+
+describe("parquet views", () => {
+  it("answers the explore page's default query", async () => {
+    const outDir = await mkdtemp(join(tmpdir(), "tennis-data-"));
+    await runPipeline({
+      venuesDir: here("../venues"),
+      outDir,
+      geoCacheFile: join(outDir, "geo-cache.json"),
+      today: TODAY,
+    });
+    const manifest = JSON.parse(
+      await readFile(join(outDir, "parquet", "manifest.json"), "utf8"),
+    ) as ParquetManifest;
+    const file = join(outDir, "parquet", manifest.views.venues_search?.path ?? "");
+
+    const db = await (await DuckDBInstance.create()).connect();
+    const result = await db.runAndReadAll(
+      `SELECT slug FROM '${file}' WHERE access_type LIKE 'open_%' AND has_covered ORDER BY slug`,
+    );
+    expect(result.getRowObjects().map((r) => r.slug)).toEqual(["tun-razak-national-tennis-centre"]);
+
+    const residents = await db.runAndReadAll(
+      `SELECT count(*)::INTEGER AS n FROM '${file}' WHERE access_type = 'residents_only'`,
+    );
+    expect(residents.getRowObjects()[0]?.n).toBe(2);
+  });
+});

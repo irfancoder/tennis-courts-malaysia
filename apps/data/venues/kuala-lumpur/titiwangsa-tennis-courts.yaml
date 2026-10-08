@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kompleks Sukan Titiwangsa
+aliases:
+  - Titiwangsa Sports Complex
+  - Titiwangsa Tennis Courts
+  - Titiwangsa DBKL tennis
+category: council
+operator: Dewan Bandaraya Kuala Lumpur (DBKL)
+location:
+  address: Taman Tasik Titiwangsa, Jalan Temerloh, 53200 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Titiwangsa
+  googleMaps: https://www.google.com/maps/place/Titiwangsa+Sports+Complex/@3.176022,101.7058489,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc481de2135627:0x33812bdf14e872cf!8m2!3d3.176022!4d101.7058489!16s%2Fg%2F1tctc2xp
+  nearestTransit: Titiwangsa LRT/Monorail/MRT station
+courts:
+  - count: 10
+    surface: hard
+    lit: yes
+    covered: false
+access:
+  type: open_online
+  whoCanPlay: Anyone. Public DBKL courts.
+booking:
+  channels:
+    - type: portal
+      label: Tempah@KL (web)
+      url: https://tempahkl.dbkl.gov.my/
+      guide: dbkl
+    - type: app
+      label: Tempah@KL (mobile)
+      url: https://play.google.com/store/apps/details?id=my.gov.tempahkl.app
+      guide: dbkl
+  requiresMyKad: unknown
+  requiresLocalNumber: unknown
+  foreignerFriendly: unknown
+pricing:
+  unit: hour
+  day: 10
+  night: 20
+  note: Day rate from 8am-7pm. Night rate from 8pm-12am.
+payment:
+  - fpx
+verified:
+  date: 2026-10-07
+  source: desk_research
+  note: Irfan has played here.
+playedHere: {}

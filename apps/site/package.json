@@ -1,0 +1,39 @@
+{
+  "name": "@tennis/site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/check-build.mjs",
+    "preview": "wrangler dev",
+    "typecheck": "astro check && tsc -p worker",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "8.0.3",
+    "@astrojs/preact": "6.0.6",
+    "@astrojs/sitemap": "3.7.4",
+    "@duckdb/duckdb-wasm": "1.32.0",
+    "@fontsource-variable/atkinson-hyperlegible-next": "5.3.0",
+    "@fontsource/barlow-condensed": "5.3.0",
+    "@protomaps/basemaps": "5.7.2",
+    "@stylexjs/stylex": "0.19.1",
+    "@tennis/data": "workspace:*",
+    "@tennis/schema": "workspace:*",
+    "astro": "7.3.6",
+    "maplibre-gl": "6.13.0",
+    "mimetext": "3.0.28",
+    "pmtiles": "4.5.0",
+    "preact": "10.29.8",
+    "valibot": "1.5.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@stylexjs/unplugin": "0.19.1",
+    "@tennis/tsconfig": "workspace:*",
+    "@types/geojson": "^7946.0.16",
+    "typescript": "6.0.3",
+    "wrangler": "4.148.0"
+  }
+}

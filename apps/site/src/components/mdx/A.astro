@@ -1,0 +1,8 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { s } from "./mdx.styles";
+
+const { href, ...rest } = Astro.props;
+const external = typeof href === "string" && /^https?:/.test(href);
+---
+<a href={href} rel={external ? "noopener" : undefined} {...rest} {...stylex.props(s.a)}><slot /></a>

@@ -1,0 +1,18 @@
+{
+  "rules": [
+    {
+      "allowed": {
+        "origins": [
+          "https://tennis.irfanismail.com",
+          "http://localhost:4321",
+          "http://localhost:4400",
+          "http://localhost:8787"
+        ],
+        "methods": ["GET", "HEAD"],
+        "headers": ["Range", "If-Match", "If-None-Match"]
+      },
+      "exposeHeaders": ["Content-Range", "Accept-Ranges", "ETag", "Content-Length"],
+      "maxAgeSeconds": 86400
+    }
+  ]
+}

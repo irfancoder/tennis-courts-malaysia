@@ -1,0 +1,28 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues } from "@tennis/data";
+import CourtBand from "../components/CourtBand.astro";
+import VenueList from "../components/VenueList.astro";
+import Explore from "../explore/Explore";
+import Base from "../layouts/Base.astro";
+import { getPlaces } from "../lib/places";
+import { page } from "../styles/page.styles";
+
+const venues = getVenues();
+const R2 = "https://data.tennis.irfanismail.com";
+// In dev, parquet comes from your local build (served at /data by local-data.mjs); tiles always from R2.
+const dataBase = import.meta.env.PUBLIC_DATA_BASE ?? (import.meta.env.DEV ? "/data" : R2);
+const tilesBase = import.meta.env.PUBLIC_TILES_BASE ?? R2;
+---
+<Base title="Explore tennis courts" description="Filter every tennis court in Malaysia by who can play, covered courts, floodlights, price and how to book, or find courts near you.">
+  <link slot="head" rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link slot="head" rel="preconnect" href={new URL(tilesBase).origin} crossorigin />
+  <CourtBand title="Explore courts" lead="Filter by who can play, covered courts, lights and price, or sort by distance from where you're staying." />
+  <div {...stylex.props(page.container, page.section)}>
+    <Explore client:only="preact" dataBase={dataBase} tilesBase={tilesBase} places={getPlaces(venues)} staticListId="all-courts" />
+    <section id="all-courts" {...stylex.props(page.section)} aria-labelledby="all-heading">
+      <h2 id="all-heading" {...stylex.props(page.h2)}>All courts</h2>
+      <VenueList venues={venues} />
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,43 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { type SiteVenue, STATUS_LABEL, SURFACE_LABEL } from "@tennis/schema";
+import { plural, rm } from "../lib/format";
+import AccessBadge from "./AccessBadge.astro";
+import { s } from "./VenueList.styles";
+
+interface Props {
+  venues: SiteVenue[];
+  /** Hide the city when every venue is in the same city. */
+  showCity?: boolean;
+  headingLevel?: "h2" | "h3";
+}
+const { venues, showCity = true, headingLevel = "h3" } = Astro.props;
+const Heading = headingLevel;
+---
+{venues.length === 0 ? (
+  <p {...stylex.props(s.empty)}>No courts listed here yet. Know one? <a href="/suggest/?kind=new">Add a court</a>.</p>
+) : (
+  <ul {...stylex.props(s.list)}>
+    {venues.map((v) => {
+      const price = rm(v.pricing.day ?? v.pricing.night, v.pricing.unit);
+      const where = [v.location.area, showCity ? v.location.city : undefined].filter(Boolean).join(", ");
+      return (
+        <li {...stylex.props(s.item)}>
+          <Heading {...stylex.props(s.name)}><a href={v.url} {...stylex.props(s.link)}>{v.name}</a></Heading>
+          {where && <p {...stylex.props(s.where)}>{where}</p>}
+          <AccessBadge type={v.access.type} />
+          <p {...stylex.props(s.facts)}>
+            <span>{plural(v.courtCount, "court")}</span>
+            {v.surfaces[0] && <span>{SURFACE_LABEL[v.surfaces[0]]}</span>}
+            {v.hasCovered && <span>{v.coveredCount} covered</span>}
+            {v.hasLit && <span>Floodlit</span>}
+            {price && <span>{price === "Free" ? price : `From ${price}`}</span>}
+            {v.playedHere && <span {...stylex.props(s.played)}>Played here</span>}
+            {v.status.value !== "open" && <span {...stylex.props(s.flag)}>{STATUS_LABEL[v.status.value]}</span>}
+            {v.isStale && <span {...stylex.props(s.flag)}>Needs re-checking</span>}
+          </p>
+        </li>
+      );
+    })}
+  </ul>
+)}

@@ -1,0 +1,69 @@
+{
+  "https://maps.app.goo.gl/CYfz7TL1hQK9F5JY8": {
+    "lat": 2.9993632,
+    "lng": 101.6792692,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Springville+Residence/@3.0001673,101.6790884,252m/data=!3m1!1e3!4m6!3m5!1s0x31cdb50be7286535:0x94e536cc8b5ff78c!8m2!3d2.9993632!4d101.6792692!16s%2Fg%2F11clvlqpl3?entry=tts&g_ep=EgoyMDI2MTAwNS4wIPu8ASoASAFQAw%3D%3D&skid=b87b1819-1825-4333-bafb-b8d91252d08e",
+    "resolvedOn": "2026-10-07"
+  },
+  "https://www.google.com/maps/place/Duta+International+Tennis+Academy+Sdn+Bhd/@3.171886,101.674666,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc48682505ada9:0x8b8c8f1d08d7f509!8m2!3d3.171886!4d101.674666!16s%2Fg%2F11cls_560d": {
+    "lat": 3.171886,
+    "lng": 101.674666,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Duta+International+Tennis+Academy+Sdn+Bhd/@3.171886,101.674666,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc48682505ada9:0x8b8c8f1d08d7f509!8m2!3d3.171886!4d101.674666!16s%2Fg%2F11cls_560d",
+    "resolvedOn": "2026-10-07"
+  },
+  "https://www.google.com/maps/place/Kompleks+Belia+Dan+Sukan+Negeri+Sembilan/data=!4m7!3m6!1s0x31cdddfd1fa94035:0xd68b871ef1f855e9!8m2!3d2.7260074!4d101.9777658!16s%2Fg%2F11b69hv_bx!19sChIJNUCpH_3dzTER6VX48R6Hi9Y": {
+    "lat": 2.7260074,
+    "lng": 101.9777658,
+    "exact": true,
+    "placeId": "ChIJNUCpH_3dzTER6VX48R6Hi9Y",
+    "resolvedUrl": "https://www.google.com/maps/place/Kompleks+Belia+Dan+Sukan+Negeri+Sembilan/data=!4m7!3m6!1s0x31cdddfd1fa94035:0xd68b871ef1f855e9!8m2!3d2.7260074!4d101.9777658!16s%2Fg%2F11b69hv_bx!19sChIJNUCpH_3dzTER6VX48R6Hi9Y",
+    "resolvedOn": "2026-10-07"
+  },
+  "https://www.google.com/maps/place/NESTCOE/data=!4m7!3m6!1s0x31cddd73f12e8169:0x43be0556a9c503bf!8m2!3d2.7191291!4d101.9470722!16s%2Fg%2F11pv9bj854!19sChIJaYEu8XPdzTERvwPFqVYFvkM": {
+    "lat": 2.7191291,
+    "lng": 101.9470722,
+    "exact": true,
+    "placeId": "ChIJaYEu8XPdzTERvwPFqVYFvkM",
+    "resolvedUrl": "https://www.google.com/maps/place/NESTCOE/data=!4m7!3m6!1s0x31cddd73f12e8169:0x43be0556a9c503bf!8m2!3d2.7191291!4d101.9470722!16s%2Fg%2F11pv9bj854!19sChIJaYEu8XPdzTERvwPFqVYFvkM",
+    "resolvedOn": "2026-10-08"
+  },
+  "https://www.google.com/maps/place/Radia+Residence/@3.1008378,101.5343903,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc4df1a2a8a1ad:0x9f7b3e608cbd65c0!8m2!3d3.1008378!4d101.5343903!16s%2Fg%2F11hbkc3z0x": {
+    "lat": 3.1008378,
+    "lng": 101.5343903,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Radia+Residence/@3.1008378,101.5343903,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc4df1a2a8a1ad:0x9f7b3e608cbd65c0!8m2!3d3.1008378!4d101.5343903!16s%2Fg%2F11hbkc3z0x",
+    "resolvedOn": "2026-10-07"
+  },
+  "https://www.google.com/maps/place/Seremban+International+Golf+Club/data=!4m7!3m6!1s0x31cddde1dd64a929:0xc000a42bf69c052d!8m2!3d2.7317338!4d101.9797325!16s%2Fg%2F113ftbjxf!19sChIJKalk3eHdzTERLQWc9iukAMA": {
+    "lat": 2.7317338,
+    "lng": 101.9797325,
+    "exact": true,
+    "placeId": "ChIJKalk3eHdzTERLQWc9iukAMA",
+    "resolvedUrl": "https://www.google.com/maps/place/Seremban+International+Golf+Club/data=!4m7!3m6!1s0x31cddde1dd64a929:0xc000a42bf69c052d!8m2!3d2.7317338!4d101.9797325!16s%2Fg%2F113ftbjxf!19sChIJKalk3eHdzTERLQWc9iukAMA",
+    "resolvedOn": "2026-10-08"
+  },
+  "https://www.google.com/maps/place/Springville+Residence/@2.9993632,101.6792692,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdb50be7286535:0x94e536cc8b5ff78c!8m2!3d2.9993632!4d101.6792692!16s%2Fg%2F11clvlqpl3": {
+    "lat": 2.9993632,
+    "lng": 101.6792692,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Springville+Residence/@2.9993632,101.6792692,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdb50be7286535:0x94e536cc8b5ff78c!8m2!3d2.9993632!4d101.6792692!16s%2Fg%2F11clvlqpl3",
+    "resolvedOn": "2026-10-07"
+  },
+  "https://www.google.com/maps/place/Titiwangsa+Sports+Complex/@3.176022,101.7058489,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc481de2135627:0x33812bdf14e872cf!8m2!3d3.176022!4d101.7058489!16s%2Fg%2F1tctc2xp": {
+    "lat": 3.176022,
+    "lng": 101.7058489,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Titiwangsa+Sports+Complex/@3.176022,101.7058489,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc481de2135627:0x33812bdf14e872cf!8m2!3d3.176022!4d101.7058489!16s%2Fg%2F1tctc2xp",
+    "resolvedOn": "2026-10-07"
+  },
+  "https://www.google.com/maps/place/Tun+Razak+National+Tennis+Centre+-+Jalan+Duta/data=!4m7!3m6!1s0x31cc48507b85b503:0x34e86ecc32a36849!8m2!3d3.17427!4d101.6765369!16s%2Fg%2F1pzxg8x5_!19sChIJA7WFe1BIzDERSWijMsxu6DQ": {
+    "lat": 3.17427,
+    "lng": 101.6765369,
+    "exact": true,
+    "placeId": "ChIJA7WFe1BIzDERSWijMsxu6DQ",
+    "resolvedUrl": "https://www.google.com/maps/place/Tun+Razak+National+Tennis+Centre+-+Jalan+Duta/data=!4m7!3m6!1s0x31cc48507b85b503:0x34e86ecc32a36849!8m2!3d3.17427!4d101.6765369!16s%2Fg%2F1pzxg8x5_!19sChIJA7WFe1BIzDERSWijMsxu6DQ",
+    "resolvedOn": "2026-10-07"
+  }
+}

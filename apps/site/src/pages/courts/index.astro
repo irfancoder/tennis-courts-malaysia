@@ -1,0 +1,25 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues, venuesByState } from "@tennis/data";
+import { STATES } from "@tennis/schema";
+import CourtBand from "../../components/CourtBand.astro";
+import Base from "../../layouts/Base.astro";
+import { plural } from "../../lib/format";
+import { s } from "../../styles/hub.styles";
+import { page } from "../../styles/page.styles";
+
+const total = getVenues().length;
+const states = [...venuesByState()].sort((a, b) => STATES[a[0]].localeCompare(STATES[b[0]]));
+---
+<Base title="Tennis courts by state" description={`Browse ${total} tennis courts across Malaysia by state, with who can play and how to book each one.`}>
+  <CourtBand title="Tennis courts by state" lead={`${plural(total, "court")} listed so far, each with who can play and how to book.`} />
+  <div {...stylex.props(page.container)}>
+    <section {...stylex.props(page.section)}>
+      <ul {...stylex.props(s.cities)}>
+        {states.map(([state, list]) => (
+          <li><a href={`/courts/${state}/`} {...stylex.props(s.city)}>{STATES[state]} <span {...stylex.props(s.count)}>{list.length}</span></a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>

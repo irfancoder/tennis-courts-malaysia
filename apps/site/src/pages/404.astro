@@ -1,0 +1,12 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { page } from "../styles/page.styles";
+---
+<Base title="Page not found" description="This page doesn't exist." noindex>
+  <CourtBand title="Out of bounds" lead="That page doesn't exist. It may have moved, or the court may have closed." />
+  <div {...stylex.props(page.container, page.section)}>
+    <p><a href="/courts/" {...stylex.props(page.link)}>Browse courts by state</a> or <a href="/explore/" {...stylex.props(page.link)}>search all courts</a>.</p>
+  </div>
+</Base>

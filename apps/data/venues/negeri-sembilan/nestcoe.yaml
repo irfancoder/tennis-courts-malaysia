@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: NESTCOE
+category: commercial
+location:
+  address: NESTCOE, Seremban, Negeri Sembilan
+  state: negeri-sembilan
+  city: Seremban
+  googleMaps: https://www.google.com/maps/place/NESTCOE/data=!4m7!3m6!1s0x31cddd73f12e8169:0x43be0556a9c503bf!8m2!3d2.7191291!4d101.9470722!16s%2Fg%2F11pv9bj854!19sChIJaYEu8XPdzTERvwPFqVYFvkM
+courts:
+  - count: 4
+    surface: hard
+    lit: "yes"
+access:
+  type: open_message
+booking:
+  channels:
+    - type: phone
+      label: Call or WhatsApp the venue to book
+  note: We don't have a booking number yet. If you've booked here, tell us how.
+verified:
+  date: 2026-10-08
+  source: desk_research
+  note: Court count, surface and lights from Irfan. Booking method not confirmed.

@@ -1,0 +1,46 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { ACCESS, type SiteVenue } from "@tennis/schema";
+import { rm } from "../lib/format";
+import { cheapestOpen, isOpen } from "../lib/group";
+import { s } from "../styles/hub.styles";
+import { page } from "../styles/page.styles";
+
+interface Props {
+  venues: SiteVenue[];
+}
+const { venues } = Astro.props;
+const cheapest = cheapestOpen(venues);
+const covered = venues.find((v) => v.hasCovered && isOpen(v));
+const hotel = venues.find(
+  (v) => v.access.type === "hotel_guest" && v.access.nonGuestBookable === "yes",
+);
+const items = [
+  cheapest && {
+    label: "Cheapest public court",
+    venue: cheapest,
+    detail: rm(cheapest.pricing.day, cheapest.pricing.unit),
+  },
+  covered && {
+    label: "Covered courts anyone can book",
+    venue: covered,
+    detail: `${covered.coveredCount} covered`,
+  },
+  hotel && {
+    label: "Hotel court open to non-guests",
+    venue: hotel,
+    detail: ACCESS[hotel.access.type].label,
+  },
+].filter((x) => Boolean(x)) as { label: string; venue: SiteVenue; detail?: string }[];
+---
+{items.length > 0 && (
+  <ul {...stylex.props(s.highlights, page.section)}>
+    {items.map((item) => (
+      <li {...stylex.props(s.highlight)}>
+        <span {...stylex.props(s.highlightLabel)}>{item.label}</span>
+        <a href={item.venue.url} {...stylex.props(s.highlightName, page.link)}>{item.venue.name}</a>
+        {item.detail && <span>{item.detail}</span>}
+      </li>
+    ))}
+  </ul>
+)}

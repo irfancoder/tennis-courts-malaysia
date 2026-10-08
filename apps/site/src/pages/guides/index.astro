@@ -1,0 +1,33 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import CourtBand from "../../components/CourtBand.astro";
+import Base from "../../layouts/Base.astro";
+import { getGuides } from "../../lib/guides";
+import { s } from "../../styles/home.styles";
+import { page } from "../../styles/page.styles";
+
+const guides = await getGuides();
+const groups = [
+  { id: "visitors", title: "Before you play", kind: "traveller" },
+  { id: "booking", title: "Booking systems", kind: "booking-system" },
+  { id: "access", title: "Private courts", kind: "access" },
+] as const;
+---
+<Base title="Booking guides" description="How to book public tennis courts in Malaysia, step by step, and how to play at clubs, hotels, condos and universities as a visitor.">
+  <CourtBand title="Booking guides" lead="Council booking portals, apps and private courts explained in plain English, including what visitors need." />
+  <div {...stylex.props(page.container)}>
+    {groups.map((g) => (
+      <section {...stylex.props(page.section)} aria-labelledby={g.id}>
+        <h2 id={g.id} {...stylex.props(page.h2)}>{g.title}</h2>
+        <ul {...stylex.props(s.guides)}>
+          {guides.filter((x) => x.data.kind === g.kind).map((x) => (
+            <li>
+              <a href={x.url} {...stylex.props(page.link)}><strong>{x.data.title}</strong></a>
+              <p {...stylex.props(page.muted)}>{x.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>

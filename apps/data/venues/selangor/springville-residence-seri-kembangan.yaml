@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Springville Residence
+aliases:
+  - Springville Equine Park
+category: condo
+location:
+  address: Persiaran Dr George Lim Ah Soo, Taman Equine, 43300 Seri Kembangan, Selangor
+  state: selangor
+  city: Seri Kembangan
+  area: Equine Park
+  googleMaps: https://maps.app.goo.gl/CYfz7TL1hQK9F5JY8
+courts:
+  - count: 1
+    surface: hard
+    covered: false
+    lit: yes
+access:
+  type: residents_only
+  whoCanPlay: Residents and the guests they invite. Guests register at the guardhouse.
+booking:
+  channels:
+    - type: resident
+      label: A resident books through building management
+      guide: condo-guest
+  requiresMyKad: unknown
+  requiresLocalNumber: unknown
+  foreignerFriendly: unknown
+verified:
+  date: 2026-10-07
+  source: visited
+  by: Irfan
+playedHere: {}

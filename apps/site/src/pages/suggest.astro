@@ -1,0 +1,20 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues } from "@tennis/data";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { page } from "../styles/page.styles";
+import SuggestForm from "../suggest/SuggestForm";
+
+const venues = getVenues()
+  .map((v) => ({ slug: v.slug, name: `${v.name} (${v.location.city})` }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "0x4AAAAAAFQTBmNmTyUGkqc6";
+---
+<Base title="Suggest a court or an edit" description="Tell us about a tennis court that's missing, or something that has changed at a court we list.">
+  <CourtBand title="Suggest a court or an edit" lead="Played somewhere recently? Prices, rules and courts change. Your note helps the next player." />
+  <div {...stylex.props(page.container, page.section)}>
+    <SuggestForm client:load venues={venues} siteKey={siteKey} />
+    <noscript><p>This form needs JavaScript. You can also email suggestions to irfan.ismail96@gmail.com.</p></noscript>
+  </div>
+</Base>

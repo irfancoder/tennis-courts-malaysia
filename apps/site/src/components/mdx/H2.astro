@@ -1,0 +1,7 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { s } from "./mdx.styles";
+
+const { id } = Astro.props;
+---
+<h2 id={id} {...stylex.props(s.h2)}><slot /></h2>

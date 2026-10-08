@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Duta International Tennis Academy
+aliases:
+  - Duta Tennis Academy
+category: academy
+location:
+  address: Tun Razak National Tennis Centre, Kompleks Sukan Jalan Duta, Jalan Tuanku Abdul Halim, 50480 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Jalan Duta
+  googleMaps: https://www.google.com/maps/place/Duta+International+Tennis+Academy+Sdn+Bhd/@3.171886,101.674666,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc48682505ada9:0x8b8c8f1d08d7f509!8m2!3d3.171886!4d101.674666!16s%2Fg%2F11cls_560d
+courts:
+  - count: 5
+    surface: hard
+    covered: false
+    lit: "yes"
+    note: Operates from the National Tennis Centre courts.
+access:
+  type: open_message
+  whoCanPlay: Anyone. Book court time or coaching by WhatsApp.
+booking:
+  channels:
+    - type: whatsapp
+      label: Academy WhatsApp
+      number: +60 12-246 0609
+  requiresMyKad: "no"
+  requiresLocalNumber: "no"
+  foreignerFriendly: unknown
+  note: The academy is based at the National Tennis Centre; see that listing for public court bookings.
+verified:
+  date: 2026-10-07
+  source: desk_research
+  note: WhatsApp number from an older third-party source. Irfan has played here.
+playedHere: {}

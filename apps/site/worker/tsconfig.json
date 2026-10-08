@@ -1,0 +1,8 @@
+{
+  "extends": "@tennis/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": []
+  },
+  "include": ["index.ts", "worker-configuration.d.ts"]
+}

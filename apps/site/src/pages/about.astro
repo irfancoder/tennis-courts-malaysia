@@ -1,0 +1,26 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { VERIFICATION_LABEL, VERIFICATION_SOURCES } from "@tennis/schema";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { page } from "../styles/page.styles";
+---
+<Base title="About this site" description="Who keeps this tennis court directory up to date, how courts are checked, and how to send corrections.">
+  <CourtBand title="About this site" />
+  <div {...stylex.props(page.container)}>
+    <div {...stylex.props(page.prose, page.section)}>
+      <p>I'm Irfan, a tennis player based in the Klang Valley. Finding a court in a new town in Malaysia usually means digging through council booking sites in Malay, old forum threads and booking apps that only list some venues. This site puts it in one place, with a plain answer to the question that matters: can I play here, and how?</p>
+      <h2 {...stylex.props(page.h2, page.section)}>How courts are checked</h2>
+      <p>Every listing shows when it was last checked and how:</p>
+      <ul>
+        {VERIFICATION_SOURCES.map((src) => <li>{VERIFICATION_LABEL[src]}</li>)}
+      </ul>
+      <p>Courts are re-checked at least once a year. Anything not checked for over a year is marked as needing re-checking.</p>
+      <h2 {...stylex.props(page.h2, page.section)}>Private courts</h2>
+      <p>Condominium, club and hotel courts are listed so residents, members, guests and visitors know what exists and who can use it. Listings never suggest getting in without permission, and never include residents' or building management's personal contact details.</p>
+      <h2 {...stylex.props(page.h2, page.section)}>Corrections</h2>
+      <p>If something is wrong, <a href="/suggest/" {...stylex.props(page.link)}>tell me</a>. Every suggestion is read and checked before it goes on the site.</p>
+      <p {...stylex.props(page.muted)}>Information is provided as a guide only. Always confirm access, prices and rules with the venue before you play.</p>
+    </div>
+  </div>
+</Base>

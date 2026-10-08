@@ -1,0 +1,21 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues } from "@tennis/data";
+import AccessSections from "../components/AccessSections.astro";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { plural } from "../lib/format";
+import { page } from "../styles/page.styles";
+
+const venues = getVenues().filter((v) => v.hasCovered);
+const courts = venues.reduce((n, v) => n + v.coveredCount, 0);
+---
+<Base title="Indoor and covered tennis courts in Malaysia" description={`${plural(courts, "covered tennis court")} at ${plural(venues.length, "venue")} in Malaysia. Play through the afternoon rain and the midday heat.`}>
+  <CourtBand title="Indoor and covered tennis courts" lead="Afternoon storms and midday heat cancel a lot of tennis in Malaysia. These venues have indoor or roofed courts." />
+  <div {...stylex.props(page.container)}>
+    <p {...stylex.props(page.prose, page.section)}>
+      {plural(courts, "covered court")} at {plural(venues.length, "venue")} so far. Covered courts are scarce and book up first in the rainy season, so book early.
+    </p>
+    <AccessSections venues={venues} />
+  </div>
+</Base>

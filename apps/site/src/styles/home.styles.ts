@@ -1,0 +1,92 @@
+import * as stylex from "@stylexjs/stylex";
+import { color, font, space } from "./tokens.stylex";
+
+export const s = stylex.create({
+  search: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: space.sm,
+    maxWidth: "34rem",
+  },
+  input: {
+    flexGrow: 1,
+    flexBasis: "14rem",
+    minHeight: "3rem",
+    paddingInline: space.md,
+    borderRadius: 999,
+    borderWidth: 0,
+    fontSize: "1.0625rem",
+    fontFamily: font.body,
+    color: color.ink,
+  },
+  submit: {
+    minHeight: "3rem",
+    paddingInline: space.lg,
+    borderRadius: 999,
+    borderWidth: 0,
+    backgroundColor: { default: color.ball, ":hover": "#EEF77A" },
+    color: color.ink,
+    fontWeight: 700,
+    fontSize: "1.0625rem",
+    fontFamily: font.body,
+    cursor: "pointer",
+  },
+  quick: {
+    marginTop: space.md,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: space.md,
+  },
+  quickLink: {
+    color: color.line,
+    fontWeight: 600,
+    textUnderlineOffset: "0.2em",
+  },
+  places: {
+    listStyle: "none",
+    padding: 0,
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(14rem, 1fr))",
+    columnGap: space.xl,
+    rowGap: space.sm,
+  },
+  place: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    gap: space.sm,
+    paddingBlock: space.sm,
+    borderBottomWidth: 2,
+    borderBottomStyle: "solid",
+    borderBottomColor: color.court,
+    textDecoration: "none",
+    color: color.ink,
+  },
+  placeName: {
+    fontFamily: font.display,
+    fontWeight: 700,
+    fontSize: "1.375rem",
+  },
+  placeCount: {
+    color: color.inkSoft,
+    whiteSpace: "nowrap",
+  },
+  legend: {
+    listStyle: "none",
+    padding: 0,
+    display: "grid",
+    gridTemplateColumns: { default: "1fr", "@media (min-width: 48rem)": "1fr 1fr" },
+    columnGap: space.xl,
+    rowGap: space.md,
+  },
+  legendItem: {
+    display: "grid",
+    gap: space.xs,
+  },
+  guides: {
+    listStyle: "none",
+    padding: 0,
+    display: "grid",
+    gap: space.sm,
+  },
+});

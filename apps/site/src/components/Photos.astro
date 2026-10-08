@@ -1,0 +1,39 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import type { SiteVenue } from "@tennis/schema";
+import { s } from "./Photo.styles";
+
+interface Props {
+  photos: SiteVenue["photos"];
+}
+const media = import.meta.env.PUBLIC_MEDIA_BASE ?? "https://media.tennis.irfanismail.com";
+// Cloudflare Image Transformations must be enabled on the zone before turning this on.
+const transforms = import.meta.env.PUBLIC_IMAGE_TRANSFORMS === "1";
+const src = (key: string, width: number) =>
+  transforms
+    ? `/cdn-cgi/image/width=${width},format=auto,fit=cover,quality=80/${media}/${key}`
+    : `${media}/${key}`;
+
+// Only photos with recorded consent are ever shown.
+const photos = Astro.props.photos.filter((p) => p.consent);
+---
+{photos.length > 0 && (
+  <div {...stylex.props(s.gallery)}>
+    {photos.map((p) => (
+      <figure {...stylex.props(s.figure)}>
+        <img
+          src={src(p.key, 800)}
+          srcset={transforms ? `${src(p.key, 480)} 480w, ${src(p.key, 800)} 800w, ${src(p.key, 1200)} 1200w` : undefined}
+          sizes="(min-width: 60rem) 30rem, 100vw"
+          alt={p.alt}
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="600"
+          {...stylex.props(s.img)}
+        />
+        {p.credit && <figcaption {...stylex.props(s.caption)}>Photo: {p.credit}</figcaption>}
+      </figure>
+    ))}
+  </div>
+)}

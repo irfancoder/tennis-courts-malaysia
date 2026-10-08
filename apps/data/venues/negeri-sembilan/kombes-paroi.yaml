@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kompleks Belia dan Sukan Negeri Sembilan (Kombes Paroi)
+aliases:
+  - Kombes Paroi
+  - Kompleks Belia dan Sukan Paroi
+category: federal
+operator: Kementerian Belia dan Sukan (KBS)
+location:
+  address: Kompleks Belia dan Sukan Paroi, Paroi, 70450 Seremban, Negeri Sembilan
+  state: negeri-sembilan
+  city: Seremban
+  area: Paroi
+  googleMaps: https://www.google.com/maps/place/Kompleks+Belia+Dan+Sukan+Negeri+Sembilan/data=!4m7!3m6!1s0x31cdddfd1fa94035:0xd68b871ef1f855e9!8m2!3d2.7260074!4d101.9777658!16s%2Fg%2F11b69hv_bx!19sChIJNUCpH_3dzTER6VX48R6Hi9Y
+courts:
+  - count: 6
+    surface: hard
+    lit: "yes"
+    covered: false
+access:
+  type: open_online
+  whoCanPlay: Anyone. Book online, pay at the counter.
+booking:
+  channels:
+    - type: portal
+      label: KBS STF booking portal
+      url: https://stf.kbs.gov.my/ks_user/login.php
+      guide: kbs-stf
+    - type: counter
+      label: Pay at the counter
+  steps:
+    - Register and book a slot on the KBS STF portal.
+    - Pay in cash at the complex counter before you play.
+  requiresMyKad: unknown
+  requiresLocalNumber: unknown
+  foreignerFriendly: "yes"
+payment:
+  - cash
+pricing:
+  unit: hour
+  day: 15
+  night: 25
+  note: Day rate from 7am-7pm. Night rate from 7pm-12am. Booking a full day has fixed rate of RM 305/day.
+verified:
+  date: 2026-10-07
+  source: visited
+  by: Irfan
+  note: Booking flow (online booking, cash at counter) confirmed by Irfan.
+playedHere: {}

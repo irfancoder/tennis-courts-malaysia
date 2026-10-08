@@ -1,0 +1,32 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { venuesByCity, venuesByState } from "@tennis/data";
+import { STATES, type StateSlug } from "@tennis/schema";
+import AccessSections from "../../../../components/AccessSections.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import CourtBand from "../../../../components/CourtBand.astro";
+import Highlights from "../../../../components/Highlights.astro";
+import Base from "../../../../layouts/Base.astro";
+import { plural } from "../../../../lib/format";
+import { page } from "../../../../styles/page.styles";
+
+export function getStaticPaths() {
+  return [...venuesByState().keys()].flatMap((state) =>
+    [...venuesByCity(state).keys()].map((city) => ({ params: { state, city } })),
+  );
+}
+
+const state = Astro.params.state as StateSlug;
+const venues = venuesByCity(state).get(Astro.params.city ?? "") ?? [];
+const city = venues[0]?.location.city ?? "";
+const stateName = STATES[state];
+const open = venues.filter((v) => v.access.type.startsWith("open_")).length;
+---
+<Base title={`Tennis courts in ${city}`} description={`${plural(venues.length, "tennis court")} in ${city}, ${stateName}. ${open} open to anyone. Who can play, prices and how to book.`}>
+  <Breadcrumbs items={[{ href: "/courts/", label: "Courts" }, { href: `/courts/${state}/`, label: stateName }, { label: city }]} />
+  <CourtBand title={`Tennis courts in ${city}`} lead={`${plural(venues.length, "court")}, ${open} of them open to anyone.`} />
+  <div {...stylex.props(page.container)}>
+    <Highlights venues={venues} />
+    <AccessSections venues={venues} showCity={false} />
+  </div>
+</Base>

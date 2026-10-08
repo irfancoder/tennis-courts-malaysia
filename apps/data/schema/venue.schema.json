@@ -1,0 +1,421 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "category": {
+      "enum": [
+        "federal",
+        "council",
+        "club",
+        "hotel",
+        "university",
+        "school",
+        "condo",
+        "commercial",
+        "academy"
+      ],
+      "type": "string"
+    },
+    "operator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "website": {
+      "type": "string",
+      "format": "uri"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "enum": [
+            "johor",
+            "kedah",
+            "kelantan",
+            "kuala-lumpur",
+            "labuan",
+            "melaka",
+            "negeri-sembilan",
+            "pahang",
+            "penang",
+            "perak",
+            "perlis",
+            "putrajaya",
+            "sabah",
+            "sarawak",
+            "selangor",
+            "terengganu"
+          ],
+          "type": "string"
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "area": {
+          "type": "string",
+          "minLength": 1
+        },
+        "googleMaps": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https:\\/\\/(maps\\.app\\.goo\\.gl\\/|goo\\.gl\\/maps\\/|(www\\.)?google\\.[a-z.]+\\/maps\\/place\\/)"
+        },
+        "lat": {
+          "type": "number",
+          "minimum": 0.8,
+          "maximum": 7.5
+        },
+        "lng": {
+          "type": "number",
+          "minimum": 99.5,
+          "maximum": 119.5
+        },
+        "coordsApproximate": {
+          "type": "boolean",
+          "default": false
+        },
+        "nearestTransit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parking": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["address", "state", "city"],
+      "additionalProperties": false
+    },
+    "courts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "surface": {
+            "enum": ["hard", "artificial_grass", "clay", "carpet", "other"],
+            "type": "string"
+          },
+          "covered": {
+            "type": "boolean",
+            "default": false
+          },
+          "lit": {
+            "enum": ["yes", "no", "unknown"],
+            "type": "string",
+            "default": "unknown"
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": ["count"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "access": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "open_online",
+            "open_walkin",
+            "open_message",
+            "open_premium",
+            "guest_of_member",
+            "reciprocal",
+            "membership",
+            "hotel_guest",
+            "institution",
+            "residents_only"
+          ],
+          "type": "string"
+        },
+        "whoCanPlay": {
+          "type": "string",
+          "minLength": 1
+        },
+        "whatToBring": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dressCode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nonGuestBookable": {
+          "enum": ["yes", "no", "unknown"],
+          "type": "string"
+        },
+        "publicWindow": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "enum": ["open", "temp_closed", "renovating", "converted_pickleball", "closed"],
+          "type": "string"
+        },
+        "since": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["value"],
+      "additionalProperties": false,
+      "default": {
+        "value": "open"
+      }
+    },
+    "booking": {
+      "type": "object",
+      "properties": {
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": ["portal", "app", "whatsapp", "phone", "counter", "walkin", "resident"],
+                "type": "string"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "number": {
+                "type": "string",
+                "pattern": "^\\+\\d[\\d -]{6,}$"
+              },
+              "guide": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              }
+            },
+            "required": ["type"],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "advanceDays": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxHours": {
+          "type": "number",
+          "minimum": 0.5
+        },
+        "cancellation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiresMyKad": {
+          "enum": ["yes", "no", "unknown"],
+          "type": "string",
+          "default": "unknown"
+        },
+        "requiresLocalNumber": {
+          "enum": ["yes", "no", "unknown"],
+          "type": "string",
+          "default": "unknown"
+        },
+        "foreignerFriendly": {
+          "enum": ["yes", "no", "unknown"],
+          "type": "string",
+          "default": "unknown"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["channels"],
+      "additionalProperties": false
+    },
+    "pricing": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "number",
+          "minimum": 0
+        },
+        "night": {
+          "type": "number",
+          "minimum": 0
+        },
+        "guestFee": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "enum": ["hour", "session"],
+          "type": "string",
+          "default": "hour"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observedOn": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "default": {}
+    },
+    "payment": {
+      "type": "array",
+      "items": {
+        "enum": ["cash", "fpx", "tng", "duitnow", "card"],
+        "type": "string"
+      },
+      "default": []
+    },
+    "hours": {
+      "type": "string",
+      "minLength": 1
+    },
+    "amenities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "credit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consent": {
+            "type": "boolean"
+          }
+        },
+        "required": ["key", "alt", "consent"],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "verified": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "source": {
+          "enum": ["visited", "called", "official_site", "user_report", "desk_research"],
+          "type": "string"
+        },
+        "by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["date", "source"],
+      "additionalProperties": false
+    },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": ["date", "note"],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "playedHere": {
+      "type": "object",
+      "properties": {
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bestTime": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lastPlayed": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "required": ["name", "category", "location", "courts", "access", "booking", "verified"],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

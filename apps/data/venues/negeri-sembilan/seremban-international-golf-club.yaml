@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Seremban International Golf Club
+aliases:
+  - SIGC
+  - SIGC tennis courts
+category: club
+operator: Seremban International Golf Club
+website: https://sigc.com.my/tennis-court/
+location:
+  address: Seremban International Golf Club, 70710 Seremban, Negeri Sembilan
+  state: negeri-sembilan
+  city: Seremban
+  googleMaps: https://www.google.com/maps/place/Seremban+International+Golf+Club/data=!4m7!3m6!1s0x31cddde1dd64a929:0xc000a42bf69c052d!8m2!3d2.7317338!4d101.9797325!16s%2Fg%2F113ftbjxf!19sChIJKalk3eHdzTERLQWc9iukAMA
+courts:
+  - count: 2
+    surface: hard
+    lit: "yes"
+access:
+  type: guest_of_member
+  whoCanPlay: >-
+    Club members. Only members or their spouses can book, and they can bring friends and family.
+    Children under 12 must be supervised.
+  dressCode: >-
+    Men: T-shirt and shorts. Women: T-shirt with shorts, skirt or pants, and flat rubber-soled
+    shoes.
+booking:
+  channels:
+    - type: counter
+      label: A member books at the club's reception counter
+  note: Tuesday to Thursday, 5pm to 9pm, is members' day.
+pricing:
+  day: 0
+  night: 0
+  note: Free for members. The club doesn't list a charge for guests.
+  observedOn: 2026-10-08
+hours: >-
+  7am to 10pm. Bookings are up to 2 hours between 7am and 7pm, and 1 hour between 7pm and 10pm.
+verified:
+  date: 2026-10-08
+  source: official_site
+  note: Rules and hours from SIGC's tennis court page. Surface and pricing from Irfan.

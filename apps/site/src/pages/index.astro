@@ -1,0 +1,101 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues, venuesByState } from "@tennis/data";
+import { ACCESS, ACCESS_TYPES, STATES } from "@tennis/schema";
+import AccessBadge from "../components/AccessBadge.astro";
+import CourtBand from "../components/CourtBand.astro";
+import VenueList from "../components/VenueList.astro";
+import Base from "../layouts/Base.astro";
+import { plural } from "../lib/format";
+import { getGuides } from "../lib/guides";
+import { s } from "../styles/home.styles";
+import { page } from "../styles/page.styles";
+
+const venues = getVenues();
+const byState = [...venuesByState()].sort((a, b) => b[1].length - a[1].length);
+const played = venues.filter((v) => v.playedHere);
+const guides = await getGuides();
+const bookingGuides = guides.filter((g) => g.data.kind !== "access");
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Tennis Courts Malaysia",
+    url: Astro.site?.toString(),
+    potentialAction: {
+      "@type": "SearchAction",
+      target: new URL("/explore/?q={query}", Astro.site).toString(),
+      "query-input": "required name=query",
+    },
+  },
+];
+---
+<Base
+  title="Tennis Courts Malaysia"
+  description="Find tennis courts across Malaysia and how to get on them: public, club, hotel, university and condo courts, with who can play, prices and booking guides."
+  jsonLd={jsonLd}
+>
+  <CourtBand
+    title="Every tennis court in Malaysia, and how to get on it"
+    lead="Public, club, hotel, university and condo courts. Who can play, what it costs and how to book, checked by a player."
+  >
+    <form action="/explore/" method="get" role="search" {...stylex.props(s.search)}>
+      <label for="q" class="sr-only">Area, city or court name</label>
+      <input id="q" name="q" type="search" placeholder="Area, city or court name" autocomplete="off" {...stylex.props(s.input)} />
+      <button type="submit" {...stylex.props(s.submit)}>Find courts</button>
+    </form>
+    <p {...stylex.props(s.quick)}>
+      <a href="/explore/" {...stylex.props(s.quickLink)}>Courts I can book without knowing anyone</a>
+      <a href="/indoor-tennis-courts/" {...stylex.props(s.quickLink)}>Covered courts for rainy days</a>
+    </p>
+  </CourtBand>
+
+  <div {...stylex.props(page.container)}>
+    <section {...stylex.props(page.section)} aria-labelledby="where">
+      <h2 id="where" {...stylex.props(page.h2)}>Where are you playing?</h2>
+      <ul {...stylex.props(s.places)}>
+        {byState.map(([state, list]) => (
+          <li>
+            <a href={`/courts/${state}/`} {...stylex.props(s.place)}>
+              <span {...stylex.props(s.placeName)}>{STATES[state]}</span>
+              <span {...stylex.props(s.placeCount)}>{plural(list.length, "court")}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p {...stylex.props(page.section, page.muted)}>
+        We are adding courts every month, starting with the Klang Valley, Penang, Langkawi, Johor Bahru and Kota Kinabalu.{" "}
+        <a href="/suggest/?kind=new" {...stylex.props(page.link)}>Tell us about a court we're missing</a>.
+      </p>
+    </section>
+
+    <section {...stylex.props(page.section)} aria-labelledby="access">
+      <h2 id="access" {...stylex.props(page.h2)}>Can I play there?</h2>
+      <p {...stylex.props(page.prose)}>Every court on this site says who is allowed to play. Plenty of private courts are open to you with the right invitation.</p>
+      <ul {...stylex.props(s.legend, page.section)}>
+        {ACCESS_TYPES.map((t) => (
+          <li {...stylex.props(s.legendItem)}>
+            <AccessBadge type={t} />
+            <span {...stylex.props(page.muted)}>{ACCESS[t].short}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {played.length > 0 && (
+      <section {...stylex.props(page.section)} aria-labelledby="played">
+        <h2 id="played" {...stylex.props(page.h2)}>Courts Irfan has played</h2>
+        <VenueList venues={played} />
+      </section>
+    )}
+
+    <section {...stylex.props(page.section)} aria-labelledby="guides">
+      <h2 id="guides" {...stylex.props(page.h2)}>Booking guides</h2>
+      <ul {...stylex.props(s.guides)}>
+        {bookingGuides.map((g) => (
+          <li><a href={g.url} {...stylex.props(page.link)}>{g.data.title}</a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>

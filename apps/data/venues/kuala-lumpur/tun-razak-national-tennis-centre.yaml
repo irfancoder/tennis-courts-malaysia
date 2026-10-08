@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Tun Razak National Tennis Centre
+aliases:
+  - National Tennis Centre
+  - NTC Jalan Duta
+  - Kompleks Sukan Jalan Duta
+  - Pusat Tenis Tun Razak
+category: federal
+operator: Perbadanan Stadium Malaysia
+website: https://www.stadium.gov.my/index.php/venues/jalan-duta-sports-complex/tun-razak-national-tennis-center
+location:
+  address: Kompleks Sukan Jalan Duta, Jalan Tuanku Abdul Halim, 50480 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Jalan Duta
+  googleMaps: https://www.google.com/maps/place/Tun+Razak+National+Tennis+Centre+-+Jalan+Duta/data=!4m7!3m6!1s0x31cc48507b85b503:0x34e86ecc32a36849!8m2!3d3.17427!4d101.6765369!16s%2Fg%2F1pzxg8x5_!19sChIJA7WFe1BIzDERSWijMsxu6DQ
+courts:
+  - count: 11
+    surface: hard
+    covered: false
+    lit: "yes"
+    note: Rebound Ace surface
+  - count: 3
+    surface: hard
+    covered: true
+    lit: "yes"
+    note: Indoor courts
+access:
+  type: open_online
+  whoCanPlay: Anyone. Recreational bookings are open to the public.
+status:
+  value: open
+  note: >-
+    Perbadanan Stadium Malaysia announced a facelift (court repairs, new floodlights) in
+    September 2025. Some courts may be closed while works are under way.
+booking:
+  channels:
+    - type: portal
+      label: Book on Courtsite
+      url: https://www.courtsite.my/centre/Kompleks%20Sukan%20Jalan%20Duta/clgd4kl4x0ni0079fqbsefbid
+      guide: courtsite
+    - type: phone
+      label: Venue office
+      number: +60 3-6206 1237
+    - type: counter
+  requiresMyKad: "no"
+  requiresLocalNumber: unknown
+  foreignerFriendly: "yes"
+pricing:
+  day: 28
+  night: 33
+  note: >-
+    Outdoor courts from RM28/hr and indoor courts from RM30/hr. Early mornings and evenings
+    cost more, and prices exclude 6% SST. Check the current rate when you book.
+  observedOn: 2026-10-08
+hours: Daily. Outdoor courts 6am to midnight, indoor courts 7am to midnight.
+verified:
+  date: 2026-10-07
+  source: desk_research
+  note: Seeded from PSM's venue page and press reports. Irfan has played here.
+changelog:
+  - date: 2026-10-08
+    note: Prices updated.
+playedHere: {}

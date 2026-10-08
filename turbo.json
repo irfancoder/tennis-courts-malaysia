@@ -1,0 +1,39 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["BUILD_DATE", "GEO_OFFLINE"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "@tennis/data#build": {
+      "inputs": [
+        "src/**",
+        "venues/**",
+        "../site/src/content/guides/**",
+        "package.json",
+        "geo-cache.json"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "@tennis/data#typecheck": {
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "@tennis/data#dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    }
+  }
+}

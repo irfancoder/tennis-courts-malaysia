@@ -1,0 +1,5 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { s } from "./mdx.styles";
+---
+<div {...stylex.props(s.tableWrap)}><table {...stylex.props(s.table)}><slot /></table></div>

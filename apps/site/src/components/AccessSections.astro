@@ -1,0 +1,26 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import type { SiteVenue } from "@tennis/schema";
+import { groupByAccess } from "../lib/group";
+import { s } from "../styles/hub.styles";
+import { page } from "../styles/page.styles";
+import VenueList from "./VenueList.astro";
+
+interface Props {
+  venues: SiteVenue[];
+  showCity?: boolean;
+}
+const { venues, showCity = true } = Astro.props;
+const sections = groupByAccess(venues);
+---
+{sections.length > 1 && (
+  <nav aria-label="Jump to section" {...stylex.props(s.jump, page.section)}>
+    {sections.map((sec) => <a href={`#${sec.id}`} {...stylex.props(page.link)}>{sec.title} ({sec.venues.length})</a>)}
+  </nav>
+)}
+{sections.map((sec) => (
+  <section {...stylex.props(page.section)} aria-labelledby={sec.id}>
+    <h2 id={sec.id} {...stylex.props(page.h2)}>{sec.title}</h2>
+    <VenueList venues={sec.venues} showCity={showCity} />
+  </section>
+))}

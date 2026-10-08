@@ -1,0 +1,51 @@
+---
+import { render } from "astro:content";
+import * as stylex from "@stylexjs/stylex";
+import { getVenues } from "@tennis/data";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CourtBand from "../../components/CourtBand.astro";
+import { mdxComponents } from "../../components/mdx";
+import VenueList from "../../components/VenueList.astro";
+import Base from "../../layouts/Base.astro";
+import { formatDate } from "../../lib/format";
+import { type Guide, getGuides } from "../../lib/guides";
+import { page } from "../../styles/page.styles";
+
+export async function getStaticPaths() {
+  return (await getGuides()).map((guide) => ({ params: { slug: guide.id }, props: { guide } }));
+}
+
+interface Props {
+  guide: Guide;
+}
+const { guide } = Astro.props;
+const { Content } = await render(guide.entry);
+const venues = getVenues().filter((v) => v.booking.channels.some((c) => c.guide === guide.id));
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.data.title,
+    description: guide.data.description,
+    dateModified: guide.data.updated,
+    author: { "@type": "Person", name: "Irfan Ismail", url: "https://irfanismail.com" },
+    mainEntityOfPage: new URL(guide.url, Astro.site).toString(),
+  },
+];
+---
+<Base title={guide.data.title} description={guide.data.description} jsonLd={jsonLd}>
+  <Breadcrumbs items={[{ href: "/guides/", label: "Guides" }, { label: guide.data.title }]} />
+  <CourtBand title={guide.data.title} lead={guide.data.description} />
+  <div {...stylex.props(page.container)}>
+    <article {...stylex.props(page.prose, page.section)}>
+      <div><Content components={mdxComponents} /></div>
+      <p {...stylex.props(page.muted)}>Updated {formatDate(guide.data.updated)}. Spotted something out of date? <a href="/suggest/" {...stylex.props(page.link)}>Let us know</a>.</p>
+    </article>
+    {venues.length > 0 && (
+      <section {...stylex.props(page.section)} aria-labelledby="venues">
+        <h2 id="venues" {...stylex.props(page.h2)}>Courts that use this</h2>
+        <VenueList venues={venues} />
+      </section>
+    )}
+  </div>
+</Base>

@@ -1,0 +1,83 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import "../styles/global.css";
+import { s } from "./Base.styles";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Structured data objects rendered as JSON-LD. */
+  jsonLd?: object[];
+  noindex?: boolean;
+}
+
+const { title, description, jsonLd = [], noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === "Tennis Courts Malaysia" ? title : `${title} | Tennis Courts Malaysia`;
+const path = Astro.url.pathname;
+const nav = [
+  { href: "/courts/", label: "Courts" },
+  { href: "/explore/", label: "Explore" },
+  { href: "/guides/", label: "Booking guides" },
+  { href: "/about/", label: "About" },
+];
+const analyticsToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+---
+<!doctype html>
+<html lang="en-MY">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#21463A" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tennis Courts Malaysia" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+    {import.meta.env.DEV && <link rel="stylesheet" href="/virtual:stylex.css" />}
+    <slot name="head" />
+  </head>
+  <body {...stylex.props(s.body)}>
+    <a href="#main" {...stylex.props(s.skip)}>Skip to content</a>
+    <header {...stylex.props(s.header)}>
+      <div {...stylex.props(s.headerInner)}>
+        <a href="/" {...stylex.props(s.brand)}><span {...stylex.props(s.ball)} aria-hidden="true"></span>Tennis Courts Malaysia</a>
+        <nav aria-label="Main" {...stylex.props(s.nav)}>
+          {nav.map((item) => {
+            const active = path.startsWith(item.href);
+            return (
+              <a href={item.href} aria-current={active ? "page" : undefined} {...stylex.props(s.navLink, active && s.navActive)}>
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
+    </header>
+    <main id="main" {...stylex.props(s.main)}>
+      <slot />
+    </main>
+    <footer {...stylex.props(s.footer)}>
+      <div {...stylex.props(s.footerInner)}>
+        <p>Kept up to date by Irfan Ismail, who plays here too. Courts change, so check with the venue before you go.</p>
+        <div {...stylex.props(s.footerLinks)}>
+          <a href="/suggest/" {...stylex.props(s.footerLink)}>Suggest a court or an edit</a>
+          <a href="/about/" {...stylex.props(s.footerLink)}>How we check courts</a>
+          <a href="https://irfanismail.com" {...stylex.props(s.footerLink)}>irfanismail.com</a>
+        </div>
+      </div>
+    </footer>
+    {analyticsToken && (
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: analyticsToken })} />
+    )}
+  </body>
+</html>

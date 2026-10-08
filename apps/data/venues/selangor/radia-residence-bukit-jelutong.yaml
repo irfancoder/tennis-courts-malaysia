@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Radia Residence
+aliases:
+  - Radia Bukit Jelutong
+category: condo
+location:
+  address: Persiaran Gerbang Utama, Seksyen U8, Bukit Jelutong, 40150 Shah Alam, Selangor
+  state: selangor
+  city: Shah Alam
+  area: Bukit Jelutong
+  googleMaps: https://www.google.com/maps/place/Radia+Residence/@3.1008378,101.5343903,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc4df1a2a8a1ad:0x9f7b3e608cbd65c0!8m2!3d3.1008378!4d101.5343903!16s%2Fg%2F11hbkc3z0x
+courts:
+  - count: 2
+    surface: artificial_grass
+    covered: false
+    lit: yes
+access:
+  type: residents_only
+  whoCanPlay: Residents and the guests they invite. Guests register at the guardhouse.
+booking:
+  channels:
+    - type: resident
+      label: A resident books through building management
+      guide: condo-guest
+  requiresMyKad: unknown
+  requiresLocalNumber: unknown
+  foreignerFriendly: unknown
+verified:
+  date: 2026-10-07
+  source: visited
+  by: Irfan
+playedHere: {}

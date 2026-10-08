@@ -1,0 +1,241 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues } from "@tennis/data";
+import {
+  ACCESS,
+  CATEGORY_LABEL,
+  CHANNEL_LABEL,
+  PAYMENT_LABEL,
+  type SiteVenue,
+  STATUS_LABEL,
+  SURFACE_LABEL,
+  VERIFICATION_LABEL,
+} from "@tennis/schema";
+import AccessBadge from "../../../../components/AccessBadge.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import CourtBand from "../../../../components/CourtBand.astro";
+import Notice from "../../../../components/Notice.astro";
+import Photos from "../../../../components/Photos.astro";
+import Base from "../../../../layouts/Base.astro";
+import {
+  channelHref,
+  directionsUrl,
+  formatDate,
+  mapsUrl,
+  plural,
+  rm,
+  yesNo,
+} from "../../../../lib/format";
+import { getGuideMap } from "../../../../lib/guides";
+import { page } from "../../../../styles/page.styles";
+import { s } from "../../../../styles/venue.styles";
+
+export function getStaticPaths() {
+  return getVenues().map((venue) => ({
+    params: { state: venue.stateSlug, city: venue.citySlug, venue: venue.slug },
+    props: { venue },
+  }));
+}
+
+interface Props {
+  venue: SiteVenue;
+}
+const { venue: v } = Astro.props;
+const guides = await getGuideMap();
+const accessInfo = ACCESS[v.access.type];
+const where = [v.location.area, v.location.city].filter(Boolean).join(", ");
+const linked = v.booking.channels.filter((c) => channelHref(c));
+const inPerson = v.booking.channels.filter((c) => !channelHref(c));
+const channelGuides = [
+  ...new Set(v.booking.channels.map((c) => c.guide).filter((g): g is string => Boolean(g))),
+]
+  .map((id) => guides.get(id))
+  .filter((g) => g !== undefined);
+const dayPrice = rm(v.pricing.day, v.pricing.unit);
+const nightPrice = rm(v.pricing.night, v.pricing.unit);
+const surfaceText = v.surfaces.map((x) => SURFACE_LABEL[x]).join(", ") || "Not confirmed";
+const litText = v.hasLit ? "Yes" : v.courts.every((c) => c.lit === "no") ? "No" : "Not confirmed";
+const isResidential = v.access.type === "residents_only";
+// Visitor-booking details only matter where the public books directly, not via a member or resident.
+const publicBooking = accessInfo.group === "open" || accessInfo.group === "premium";
+function courtLine(c: SiteVenue["courts"][number]): string {
+  const kind = [
+    c.covered ? "covered" : "outdoor",
+    c.surface ? SURFACE_LABEL[c.surface].toLowerCase().replace(/ court$/, "") : undefined,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const lights = c.lit === "yes" ? ", floodlit" : c.lit === "no" ? ", no lights" : "";
+  return `${c.count} ${kind} ${c.count === 1 ? "court" : "courts"}${lights}${c.note ? `. ${c.note}` : ""}`;
+}
+
+const title = `${v.name} tennis courts`;
+const description = `${accessInfo.label}. ${plural(v.courtCount, "court")} in ${where}. How to book, prices and who can play at ${v.name}.`;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    name: v.name,
+    alternateName: v.aliases.length ? v.aliases : undefined,
+    url: new URL(v.url, Astro.site).toString(),
+    sport: "Tennis",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: v.location.address,
+      addressLocality: v.location.city,
+      addressRegion: v.stateName,
+      addressCountry: "MY",
+    },
+    geo: { "@type": "GeoCoordinates", latitude: v.location.lat, longitude: v.location.lng },
+    hasMap: mapsUrl(v.location),
+    publicAccess: v.access.type.startsWith("open_"),
+    ...(isResidential
+      ? {}
+      : { telephone: v.booking.channels.find((c) => c.type === "phone")?.number }),
+    sameAs: v.website,
+  },
+];
+---
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <Breadcrumbs items={[
+    { href: "/courts/", label: "Courts" },
+    { href: `/courts/${v.stateSlug}/`, label: v.stateName },
+    { href: `/courts/${v.stateSlug}/${v.citySlug}/`, label: v.location.city },
+    { label: v.name },
+  ]} />
+  <CourtBand kicker={`${CATEGORY_LABEL[v.category]} in ${where}`} title={v.name}>
+    {v.aliases.length > 0 && <p {...stylex.props(s.aliases)}>Also known as {v.aliases.join(", ")}</p>}
+  </CourtBand>
+
+  <div {...stylex.props(page.container)}>
+    <section {...stylex.props(s.answer)} aria-labelledby="can-i-play">
+      <h2 id="can-i-play" {...stylex.props(s.question)}>Can I play here?</h2>
+      <AccessBadge type={v.access.type} large />
+      <p>{v.access.whoCanPlay ?? accessInfo.short}</p>
+      <p>{accessInfo.howToGetIn}</p>
+      {v.status.value !== "open" && (
+        <Notice><strong>{STATUS_LABEL[v.status.value]}.</strong> {v.status.note}</Notice>
+      )}
+      {v.status.value === "open" && v.status.note && <Notice>{v.status.note}</Notice>}
+      {v.isStale && (
+        <Notice>We last checked this court on {formatDate(v.verified.date)}, more than a year ago. Details may have changed.</Notice>
+      )}
+    </section>
+
+    <div {...stylex.props(page.twoCol, page.section)}>
+      <div {...stylex.props(page.stack)}>
+        <section aria-labelledby="book">
+          <h2 id="book" {...stylex.props(page.h2)}>{isResidential ? "How residents book" : "How to book"}</h2>
+          <div {...stylex.props(page.stack)}>
+            {v.booking.steps && (
+              <ol {...stylex.props(s.steps)}>{v.booking.steps.map((step) => <li>{step}</li>)}</ol>
+            )}
+            {linked.length > 0 && (
+              <div {...stylex.props(s.actions)}>
+                {linked.map((c, i) => (
+                  <a href={channelHref(c)} {...stylex.props(page.button, i > 0 && page.buttonSecondary)} rel={c.url ? "noopener" : undefined}>
+                    {c.label ?? CHANNEL_LABEL[c.type]}
+                  </a>
+                ))}
+              </div>
+            )}
+            {inPerson.map((c) => (
+              <p {...stylex.props(s.inPerson)}>{c.label ?? CHANNEL_LABEL[c.type]}</p>
+            ))}
+            {v.booking.note && <p>{v.booking.note}</p>}
+            {channelGuides.map((g) => (
+              <p><a href={g.url} {...stylex.props(page.link)}>{g.data.title}</a></p>
+            ))}
+            {!isResidential && (
+              <ul {...stylex.props(s.requirements)}>
+                {publicBooking && <li>{yesNo(v.booking.foreignerFriendly, "Visitors can book without local ID", "Booking is hard without local ID", "Booking as a visitor: not confirmed yet")}</li>}
+                {v.booking.requiresMyKad !== "unknown" && <li>{yesNo(v.booking.requiresMyKad, "Needs a MyKad (Malaysian IC)", "No MyKad needed")}</li>}
+                {v.booking.requiresLocalNumber !== "unknown" && <li>{yesNo(v.booking.requiresLocalNumber, "Needs a Malaysian (+60) phone number", "No Malaysian phone number needed")}</li>}
+                {v.payment.length > 0 && <li>Pay by {v.payment.map((p) => PAYMENT_LABEL[p]).join(", ")}</li>}
+                {v.booking.advanceDays !== undefined && <li>Book up to {plural(v.booking.advanceDays, "day")} ahead</li>}
+                {v.booking.maxHours !== undefined && <li>Up to {plural(v.booking.maxHours, "hour")} per booking</li>}
+                {v.booking.cancellation && <li>{v.booking.cancellation}</li>}
+              </ul>
+            )}
+          </div>
+        </section>
+
+        <section aria-labelledby="courts" {...stylex.props(page.section)}>
+          <h2 id="courts" {...stylex.props(page.h2)}>The courts</h2>
+          <dl {...stylex.props(s.scoreboard)}>
+            <div {...stylex.props(s.stat)}><dt {...stylex.props(s.statLabel)}>Courts</dt><dd {...stylex.props(s.statValue)}>{v.courtCount}</dd></div>
+            <div {...stylex.props(s.stat)}><dt {...stylex.props(s.statLabel)}>Covered</dt><dd {...stylex.props(s.statValue)}>{v.coveredCount}</dd></div>
+            <div {...stylex.props(s.stat)}><dt {...stylex.props(s.statLabel)}>Lights</dt><dd {...stylex.props(s.statValue, s.statValueText)}>{litText}</dd></div>
+            <div {...stylex.props(s.stat)}><dt {...stylex.props(s.statLabel)}>Surface</dt><dd {...stylex.props(s.statValue, s.statValueText)}>{surfaceText}</dd></div>
+            {!isResidential && <div {...stylex.props(s.stat)}><dt {...stylex.props(s.statLabel)}>Day rate</dt><dd {...stylex.props(s.statValue, !dayPrice && s.statValueText)}>{dayPrice ?? "Ask"}</dd></div>}
+            {!isResidential && <div {...stylex.props(s.stat)}><dt {...stylex.props(s.statLabel)}>Night rate</dt><dd {...stylex.props(s.statValue, !nightPrice && s.statValueText)}>{nightPrice ?? "Ask"}</dd></div>}
+          </dl>
+          <dl {...stylex.props(s.dl, page.section)}>
+            {v.pricing.note && <><dt {...stylex.props(s.dt)}>Prices</dt><dd>{v.pricing.note}{v.pricing.observedOn && ` (seen ${formatDate(v.pricing.observedOn)})`}</dd></>}
+            {v.pricing.guestFee !== undefined && <><dt {...stylex.props(s.dt)}>Guest fee</dt><dd>{rm(v.pricing.guestFee)}</dd></>}
+            <dt {...stylex.props(s.dt)}>Courts</dt>
+            <dd>
+              <ul {...stylex.props(s.courtGroups)}>
+                {v.courts.map((c) => (
+                  <li>{courtLine(c)}</li>
+                ))}
+              </ul>
+            </dd>
+            {v.hours && <><dt {...stylex.props(s.dt)}>Hours</dt><dd>{v.hours}</dd></>}
+            {v.access.whatToBring && <><dt {...stylex.props(s.dt)}>What to bring</dt><dd>{v.access.whatToBring}</dd></>}
+            {v.access.dressCode && <><dt {...stylex.props(s.dt)}>Dress code</dt><dd>{v.access.dressCode}</dd></>}
+            {v.amenities.length > 0 && <><dt {...stylex.props(s.dt)}>Facilities</dt><dd>{v.amenities.join(", ")}</dd></>}
+            {v.operator && <><dt {...stylex.props(s.dt)}>Run by</dt><dd>{v.operator}</dd></>}
+            {v.website && <><dt {...stylex.props(s.dt)}>Website</dt><dd><a href={v.website} {...stylex.props(page.link)} rel="noopener">Official page</a></dd></>}
+          </dl>
+        </section>
+
+        {v.photos.some((p) => p.consent) && (
+          <section aria-labelledby="photos" {...stylex.props(page.section)}>
+            <h2 id="photos" {...stylex.props(page.h2)}>Photos</h2>
+            <Photos photos={v.photos} />
+          </section>
+        )}
+
+        <section aria-labelledby="where" {...stylex.props(page.section)}>
+          <h2 id="where" {...stylex.props(page.h2)}>Getting there</h2>
+          <dl {...stylex.props(s.dl)}>
+            <dt {...stylex.props(s.dt)}>Address</dt><dd>{v.location.address}</dd>
+            {v.location.nearestTransit && <><dt {...stylex.props(s.dt)}>Nearest station</dt><dd>{v.location.nearestTransit}</dd></>}
+            {v.location.parking && <><dt {...stylex.props(s.dt)}>Parking</dt><dd>{v.location.parking}</dd></>}
+          </dl>
+          <div {...stylex.props(s.actions, page.section)}>
+            <a href={directionsUrl(v.location)} {...stylex.props(page.button)} rel="noopener">Get directions</a>
+            <a href={mapsUrl(v.location)} {...stylex.props(page.button, page.buttonSecondary)} rel="noopener">Open in Google Maps</a>
+          </div>
+          {v.location.coordsApproximate && <p {...stylex.props(page.muted, page.section)}>The map pin is approximate.</p>}
+        </section>
+      </div>
+
+      <aside {...stylex.props(page.stack)}>
+        {v.playedHere && (
+          <section {...stylex.props(s.played)} aria-labelledby="played">
+            <h2 id="played" {...stylex.props(page.h3)}>Irfan has played here</h2>
+            {v.playedHere.note ? <p>{v.playedHere.note}</p> : <p>Notes from playing here are coming soon.</p>}
+            {v.playedHere.bestTime && <p><strong>Best time to play:</strong> {v.playedHere.bestTime}</p>}
+            {v.playedHere.lastPlayed && <p>Last played {formatDate(v.playedHere.lastPlayed)}</p>}
+          </section>
+        )}
+        <section aria-labelledby="checked">
+          <h2 id="checked" {...stylex.props(page.h3)}>How current is this?</h2>
+          <p>Last checked {formatDate(v.verified.date)}. Source: {VERIFICATION_LABEL[v.verified.source].toLowerCase()}.</p>
+          {v.changelog.length > 0 && (
+            <ul {...stylex.props(s.changelog, page.section)}>
+              {v.changelog.map((c) => <li>{formatDate(c.date)}: {c.note}</li>)}
+            </ul>
+          )}
+        </section>
+        <section aria-labelledby="fix">
+          <h2 id="fix" {...stylex.props(page.h3)}>Something wrong?</h2>
+          <p>Prices and rules change. If you played here recently and something is different, tell us.</p>
+          <p {...stylex.props(page.section)}><a href={`/suggest/?venue=${v.slug}`} {...stylex.props(page.button, page.buttonSecondary)}>Suggest an edit</a></p>
+        </section>
+      </aside>
+    </div>
+  </div>
+</Base>

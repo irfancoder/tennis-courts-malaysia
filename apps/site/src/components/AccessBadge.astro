@@ -1,0 +1,16 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { ACCESS, type AccessType } from "@tennis/schema";
+import { s } from "./AccessBadge.styles";
+
+interface Props {
+  type: AccessType;
+  large?: boolean;
+}
+const { type, large = false } = Astro.props;
+const info = ACCESS[type];
+---
+<span {...stylex.props(s.badge, large && s.large)}>
+  <span {...stylex.props(s.dot, s[info.group])} aria-hidden="true"></span>
+  {info.label}
+</span>
