@@ -100,7 +100,10 @@ describe("parquet views", () => {
     const result = await db.runAndReadAll(
       `SELECT slug FROM '${file}' WHERE access_type LIKE 'open_%' AND has_covered ORDER BY slug`,
     );
-    expect(result.getRowObjects().map((r) => r.slug)).toEqual(["tun-razak-national-tennis-centre"]);
+    expect(result.getRowObjects().map((r) => r.slug)).toEqual([
+      "rekt-it-club",
+      "tun-razak-national-tennis-centre",
+    ]);
 
     const residents = await db.runAndReadAll(
       `SELECT count(*)::INTEGER AS n FROM '${file}' WHERE access_type = 'residents_only'`,
