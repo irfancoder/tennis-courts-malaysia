@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Rekt-It Club
+aliases:
+  - Rekt-It Tennis Club
+  - REKT-IT Club Tennis Academy
+category: commercial
+location:
+  address: 4th Floor, Wisma Kah Motor, 566 Jalan Sultan Azlan Shah, Batu 3 1/2, 51200 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Jalan Ipoh
+  googleMaps: https://maps.app.goo.gl/D6U38eDuriGbutNv9
+courts:
+  - count: 6
+    surface: carpet
+    covered: true
+    lit: "yes"
+    note: Astroturf courts on a sheltered rooftop.
+access:
+  type: open_online
+  whoCanPlay: Anyone. Book a court online.
+booking:
+  channels:
+    - type: portal
+      label: Book on Rezerv
+      url: https://rekt-it.rezerv.co/
+    - type: phone
+      label: Club phone
+      number: +60 11-2305 5311
+  requiresMyKad: "no"
+  requiresLocalNumber: "no"
+  foreignerFriendly: "yes"
+pricing:
+  unit: hour
+  day: 55
+  night: 75
+  note: >-
+    Rates depend on peak times, not day or night. Off-peak is RM55/hr: weekdays 7am to 5pm, and
+    weekends and public holidays 7am to 9am. Peak is RM75/hr: weekdays 5pm to midnight, and
+    weekends and public holidays 9am to midnight.
+  observedOn: 2026-10-08
+verified:
+  date: 2026-10-08
+  source: desk_research
+  note: Courts and booking link from Irfan. Address and phone from the club's listings. Irfan has played here.
+playedHere: {}
