@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: UPM Tennis Courts
+aliases:
+  - Universiti Putra Malaysia tennis courts
+  - UPM Serdang tennis
+category: university
+operator: Universiti Putra Malaysia (UPM)
+website: https://www.upm.edu.my/
+location:
+  address: Universiti Putra Malaysia, 43400 Serdang, Selangor
+  state: selangor
+  city: Serdang
+  area: UPM
+  lat: 2.9990
+  lng: 101.7070
+  coordsApproximate: true
+courts:
+  - count: 6
+    surface: hard
+    covered: false
+    lit: "yes"
+access:
+  type: open_walkin
+  whoCanPlay: Anyone. Pay the court rate at the venue.
+booking:
+  channels:
+    - type: counter
+      label: Pay at the venue
+  note: We haven't confirmed how to book ahead. If you've booked here, tell us how.
+pricing:
+  unit: hour
+  day: 20
+  note: RM20 per hour.
+  observedOn: 2026-10-19
+hours: 8am-7pm daily. Closed on public holidays.
+verified:
+  date: 2026-10-19
+  source: visited
+  by: Irfan
+  note: >-
+    Court count, surface, lights, rate and hours from Irfan, who visited but didn't play.
+    Booking method and exact court location not confirmed.
