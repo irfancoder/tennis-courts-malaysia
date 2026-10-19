@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: d'Tempat Country Club
+aliases:
+  - D'Tempat Country Club
+  - dTempat Country Club
+category: club
+operator: Matrix Country Club Sdn Bhd (Matrix Concepts)
+website: http://dtempat.com/
+location:
+  address: PT 12653, Jalan Pusat Dagangan Sendayan 1, 71950 Bandar Sri Sendayan, Negeri Sembilan
+  state: negeri-sembilan
+  city: Seremban
+  area: Bandar Sri Sendayan
+  lat: 2.6744991
+  lng: 101.8635314
+courts:
+  - count: 1
+    covered: true
+    note: Indoor court with open sides for natural ventilation.
+access:
+  type: guest_of_member
+  whoCanPlay: >-
+    Club members and the guests they invite. Guests of d'Sora Boutique Business Hotel next door
+    can also use the courts.
+booking:
+  channels:
+    - type: phone
+      label: Club office
+      number: +60 6-792 2688
+    - type: counter
+      label: A member books at the club
+pricing:
+  guestFee: 20
+  unit: session
+  note: Non-members pay RM20 per entry when a member invites them.
+  observedOn: 2026-10-19
+verified:
+  date: 2026-10-19
+  source: desk_research
+  note: >-
+    Access and guest fee from Irfan. Address, phone and indoor courts from the club's website
+    and blog posts. Irfan has played here.
+playedHere: {}
