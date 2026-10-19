@@ -19,17 +19,17 @@
     "dev": "tsx watch --clear-screen=false src/dev.ts"
   },
   "dependencies": {
-    "@tennis/schema": "workspace:*",
     "@duckdb/node-api": "1.5.6-r.1",
+    "@tennis/schema": "workspace:*",
     "valibot": "1.5.0",
     "yaml": "2.9.1"
   },
   "devDependencies": {
     "@tennis/tsconfig": "workspace:*",
-    "typescript": "6.0.3",
     "@types/node": "^22",
+    "@valibot/to-json-schema": "1.8.0",
     "tsx": "4.23.15",
-    "vitest": "5.0.3",
-    "@valibot/to-json-schema": "1.8.0"
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
   }
 }
