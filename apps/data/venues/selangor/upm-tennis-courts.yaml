@@ -3,11 +3,12 @@ name: UPM Tennis Courts
 aliases:
   - Universiti Putra Malaysia tennis courts
   - UPM Serdang tennis
+  - Kompleks Tenis UPM
 category: university
-operator: Universiti Putra Malaysia (UPM)
+operator: Akademi Sukan, Universiti Putra Malaysia (UPM)
 website: https://www.upm.edu.my/
 location:
-  address: Universiti Putra Malaysia, 43400 Serdang, Selangor
+  address: Kompleks Tenis, Universiti Putra Malaysia, 43400 Serdang, Selangor
   state: selangor
   city: Serdang
   area: UPM
@@ -20,13 +21,20 @@ courts:
     covered: false
     lit: "yes"
 access:
-  type: open_walkin
-  whoCanPlay: Anyone. Pay the court rate at the venue.
+  type: open_message
+  whoCanPlay: Anyone. UPM students and staff get priority.
 booking:
   channels:
-    - type: counter
-      label: Pay at the venue
-  note: We haven't confirmed how to book ahead. If you've booked here, tell us how.
+    - type: whatsapp
+      label: Unit Fasiliti dan Operasi Sukan, Akademi Sukan UPM
+      number: +60 3-9769 1282
+  steps:
+    - WhatsApp the Unit Fasiliti dan Operasi Sukan with the date and time you want.
+    - Fill in the facility booking form (Borang Tempahan Fasiliti) they send you.
+    - Keep the booking form with you. Akademi Sukan staff or UPM security may ask to see it.
+  note: >-
+    The office answers enquiries during office hours only. Akademi Sukan can cancel bookings
+    without notice.
 pricing:
   unit: hour
   day: 20
@@ -39,4 +47,5 @@ verified:
   by: Irfan
   note: >-
     Court count, surface, lights, rate and hours from Irfan, who visited but didn't play.
-    Booking method and exact court location not confirmed.
+    Booking by WhatsApp from Irfan. Booking rules from the Akademi Sukan booking form (updated
+    30 November 2023). Exact court location not confirmed.
