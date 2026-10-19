@@ -30,7 +30,7 @@ export default function SuggestForm({ venues, siteKey }: Props) {
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState<string | null>(null);
   const widget = useRef<HTMLDivElement>(null);
-  const widgetId = useRef<string>();
+  const widgetId = useRef<string | undefined>(undefined);
 
   useEffect(() => {
     const p = new URLSearchParams(location.search);
