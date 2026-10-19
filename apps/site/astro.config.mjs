@@ -11,7 +11,14 @@ export default defineConfig({
   output: "static",
   trailingSlash: "always",
   build: { inlineStylesheets: "never" },
-  integrations: [mdx(), preact(), sitemap()],
+  integrations: [
+    mdx(),
+    preact(),
+    // The partners page stays out of search until monetisation is switched on.
+    sitemap({
+      filter: (page) => process.env.PUBLIC_MONETISATION === "1" || !page.endsWith("/partners/"),
+    }),
+  ],
   vite: {
     plugins: [
       localData(),

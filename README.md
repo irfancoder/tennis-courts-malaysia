@@ -78,4 +78,7 @@ The basemap (`tiles/malaysia.pmtiles`, ~226 MB) and its fonts/sprites live in th
 
 - **GitHub:** create the repo, then add secrets `CLOUDFLARE_API_TOKEN` (permissions: Workers Scripts edit, Workers R2 Storage edit, D1 edit, Account read) and `CLOUDFLARE_ACCOUNT_ID`.
 - **Web Analytics:** in the Cloudflare dashboard, add tennis.irfanismail.com under Web Analytics and set the beacon token as the GitHub Actions variable `PUBLIC_CF_BEACON_TOKEN`.
+- **Umami analytics:** the website ID is in `Base.astro`, so tracking works with no setup. In Umami Cloud, turn on the share URL and set it as the GitHub Actions variable `PUBLIC_UMAMI_SHARE_URL` (it is linked from `/partners/`). Add goals for `booking_click` and `affiliate_click`.
+- **Search Console:** verify tennis.irfanismail.com with a DNS TXT record in Cloudflare and submit `/sitemap-index.xml`. Import it into Bing Webmaster Tools.
+- **Monetisation** (only once the PRD §9 thresholds hold): set the GitHub Actions variable `PUBLIC_MONETISATION=1`. This shows `stay` affiliate links and `featured` badges from the venue YAML and guide frontmatter, and makes `/partners/` indexable.
 - **Image Transformations** (once there are photos): enable Transformations for irfanismail.com in the dashboard, then set the GitHub Actions variable `PUBLIC_IMAGE_TRANSFORMS=1`.

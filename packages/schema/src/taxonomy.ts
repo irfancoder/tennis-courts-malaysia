@@ -265,3 +265,11 @@ export const REGIONS = {
   other: "Rest of Malaysia",
 } as const;
 export type Region = keyof typeof REGIONS;
+
+/** Affiliate programmes for "Stay nearby" links. Shown only once monetisation is switched on. */
+export const PARTNERS = ["agoda", "booking"] as const;
+export type Partner = (typeof PARTNERS)[number];
+export const PARTNER_LABEL: Record<Partner, string> = {
+  agoda: "Agoda",
+  booking: "Booking.com",
+};

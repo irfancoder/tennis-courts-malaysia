@@ -289,6 +289,14 @@ The site does **not** take bookings or payments.
 - Accessible (WCAG AA contrast, readable text).
 - Works without an account. No login needed for any reader feature.
 - Analytics on search queries, filters used and outbound action clicks, privacy-respecting (no personal data collected beyond what a submitter chooses to give).
+  - **Tool:** Umami Cloud. It sets no cookies, so no consent banner is needed, and query strings are excluded because Explore keeps "near me" coordinates in the URL. Cloudflare Web Analytics runs alongside as a cross-check.
+  - **Events** are defined in `apps/site/src/lib/track.ts`:
+    - `booking_click`, `website_click`, `directions_click`, `maps_click` on venue pages
+    - `guide_outbound` on guide pages
+    - `search`, `filter_apply`, `view_toggle`, `near_me` on Explore
+    - `suggestion_submit` from the suggest form
+    - `affiliate_click` and `featured_click`, reserved for monetisation
+  - **Referral tags:** links to commercial booking platforms (Courtsite, Rezerv) carry `utm_source=tennis.irfanismail.com` so they can see referrals. Council portals are left untagged.
 - Fits the personal-site brand (tennis.irfanismail.com); attribution "maintained by Irfan".
 
 ## 9. Monetisation (optional, not a launch goal)
@@ -298,6 +306,17 @@ The site does **not** take bookings or payments.
 - ≥ 3,000 monthly visitors
 - ≥ 300 monthly visits to hotel-court or travel pages
 - unprompted user submissions or messages from outside Malaysia or out of state
+
+**How the thresholds are checked:** each month, in Umami:
+- Visitors for the month.
+- Visits to hotel-court venue pages and traveller guides, using a saved path filter.
+- The country breakdown, alongside `/suggest/` submissions.
+
+Everything is built behind `PUBLIC_MONETISATION`, which is off by default:
+- `stay` affiliate links on venues and guides
+- `featured` badges, which never change ranking
+- `/partners/` media kit, which stays `noindex` until the flag is on
+- `/privacy/` and `/terms/`, which already carry the disclosures
 
 In priority order, none required for MVP:
 1. Hotel affiliate links on hotel-court pages and travel guides (Phase 2).

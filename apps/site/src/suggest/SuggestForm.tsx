@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { s as ex } from "../explore/explore.styles";
+import { EVENTS, track } from "../lib/track";
 import { s } from "./suggest.styles";
 
 type Props = {
@@ -87,6 +88,7 @@ export default function SuggestForm({ venues, siteKey }: Props) {
             "Something went wrong. Try again.",
         );
       }
+      track(EVENTS.suggestion, { kind });
       setState("sent");
     } catch {
       setState("idle");

@@ -1,8 +1,12 @@
 ---
 import * as stylex from "@stylexjs/stylex";
+import { hostOf } from "../../lib/format";
+import { EVENTS, trackAttrs } from "../../lib/track";
 import { s } from "./mdx.styles";
 
 const { href, ...rest } = Astro.props;
 const external = typeof href === "string" && /^https?:/.test(href);
+const guide = Astro.url.pathname.match(/^\/guides\/([^/]+)/)?.[1];
+const tracking = external ? trackAttrs(EVENTS.guideOutbound, { guide, host: hostOf(href) }) : {};
 ---
-<a href={href} rel={external ? "noopener" : undefined} {...rest} {...stylex.props(s.a)}><slot /></a>
+<a href={href} rel={external ? "noopener" : undefined} {...rest} {...tracking} {...stylex.props(s.a)}><slot /></a>

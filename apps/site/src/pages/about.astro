@@ -3,6 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 import { VERIFICATION_LABEL, VERIFICATION_SOURCES } from "@tennis/schema";
 import CourtBand from "../components/CourtBand.astro";
 import Base from "../layouts/Base.astro";
+import { monetisationOn } from "../lib/monetisation";
 import { page } from "../styles/page.styles";
 ---
 <Base title="About this site" description="Who keeps this tennis court directory up to date, how courts are checked, and how to send corrections.">
@@ -20,6 +21,12 @@ import { page } from "../styles/page.styles";
       <p>Condominium, club and hotel courts are listed so residents, members, guests and visitors know what exists and who can use it. Listings never suggest getting in without permission, and never include residents' or building management's personal contact details.</p>
       <h2 {...stylex.props(page.h2, page.section)}>Corrections</h2>
       <p>If something is wrong, <a href="/suggest/" {...stylex.props(page.link)}>tell me</a>. Every suggestion is read and checked before it goes on the site.</p>
+      {monetisationOn && (
+        <>
+          <h2 {...stylex.props(page.h2, page.section)}>Working with brands</h2>
+          <p>Hotels, academies and gear brands can partner with the site through clearly labelled placements. <a href="/partners/" {...stylex.props(page.link)}>See how it works</a>.</p>
+        </>
+      )}
       <p {...stylex.props(page.muted)}>Information is provided as a guide only. Always confirm access, prices and rules with the venue before you play.</p>
     </div>
   </div>

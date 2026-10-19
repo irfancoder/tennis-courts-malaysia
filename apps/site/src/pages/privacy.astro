@@ -1,0 +1,34 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { page } from "../styles/page.styles";
+---
+<Base title="Privacy" description="What this tennis court directory collects, why, and what it never collects.">
+  <CourtBand title="Privacy" />
+  <div {...stylex.props(page.container)}>
+    <div {...stylex.props(page.prose, page.section)}>
+      <p>This site is run by Irfan Ismail. You don't need an account to use any part of it, and it doesn't use advertising or tracking cookies.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Visitor statistics</h2>
+      <p>To see which pages and courts are useful, the site counts visits with <a href="https://umami.is" {...stylex.props(page.link)} rel="noopener">Umami</a> and Cloudflare Web Analytics. Neither sets cookies or stores your IP address. They record things like the page you viewed, the site that sent you, your country, device type, and actions such as tapping a booking link, searching, or using a filter. None of this can be used to identify you.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Suggestions you send</h2>
+      <p>When you <a href="/suggest/" {...stylex.props(page.link)}>suggest a court or an edit</a>, the site stores your message, the court it's about, any source you add, and any contact details you choose to give. To stop spam, it also keeps a one-way hash of your IP address that can't be turned back into the address, and uses Cloudflare Turnstile to check you're not a bot. Suggestions are only used to check and update listings. To have a suggestion deleted, send another suggestion asking for it.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Location</h2>
+      <p>"Near me" on the explore page asks your browser for your location to sort courts by distance. Your location stays in your browser and is never sent to this site.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Links to other sites</h2>
+      <p>Booking links, maps and venue websites take you to other sites, which have their own privacy policies. Links to some commercial booking platforms carry a tag saying they came from this site, so those platforms know where their visitors come from. The tag holds nothing about you.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Affiliate links and sponsors</h2>
+      <p>Some links in the future may be affiliate links, such as links to hotels near courts, which pay this site a small commission if you book. They will always be labelled. Sponsors and paid placements will also be labelled, and never change a court's access details or its place in the listings.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Your rights</h2>
+      <p>This site follows Malaysia's Personal Data Protection Act 2010. To see, correct or delete anything you've sent, <a href="/suggest/" {...stylex.props(page.link)}>get in touch</a>.</p>
+
+      <p {...stylex.props(page.muted, page.section)}>Last updated 19 October 2026.</p>
+    </div>
+  </div>
+</Base>
