@@ -15,7 +15,9 @@ location:
   lng: 101.8635314
 courts:
   - count: 1
+    surface: artificial_grass
     covered: true
+    lit: "yes"
     note: Indoor court with open sides for natural ventilation.
 access:
   type: guest_of_member
