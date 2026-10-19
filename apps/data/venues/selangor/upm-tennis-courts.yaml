@@ -12,9 +12,9 @@ location:
   state: selangor
   city: Serdang
   area: UPM
-  lat: 2.9990
-  lng: 101.7070
-  coordsApproximate: true
+  googleMaps: https://maps.app.goo.gl/JATQ8u7RnD9KDU5A8
+  lat: 2.9974324
+  lng: 101.7043065
 courts:
   - count: 6
     surface: hard
@@ -28,9 +28,12 @@ booking:
     - type: whatsapp
       label: Unit Fasiliti dan Operasi Sukan, Akademi Sukan UPM
       number: +60 3-9769 1282
+    - type: portal
+      label: Booking form (PDF)
+      url: https://drive.google.com/file/d/17ezpPLM0ucIGK_e-En0NEgvhhiVoJWBV/view?usp=drivesdk
   steps:
     - WhatsApp the Unit Fasiliti dan Operasi Sukan with the date and time you want.
-    - Fill in the facility booking form (Borang Tempahan Fasiliti) they send you.
+    - Download and fill in the facility booking form (Borang Tempahan Fasiliti).
     - Keep the booking form with you. Akademi Sukan staff or UPM security may ask to see it.
   note: >-
     The office answers enquiries during office hours only. Akademi Sukan can cancel bookings
@@ -48,4 +51,4 @@ verified:
   note: >-
     Court count, surface, lights, rate and hours from Irfan, who visited but didn't play.
     Booking by WhatsApp from Irfan. Booking rules from the Akademi Sukan booking form (updated
-    30 November 2023). Exact court location not confirmed.
+    30 November 2023). Map pin from Irfan.
