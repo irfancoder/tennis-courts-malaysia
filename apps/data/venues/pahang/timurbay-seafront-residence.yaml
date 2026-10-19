@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Timurbay Seafront Residence
+aliases:
+  - TimurBay Seafront Residences
+  - Timur Bay Seafront Residence
+category: condo
+location:
+  address: Jalan Kuantan-Kemaman, Kampung Sungai Karang, 26100 Kuantan, Pahang
+  state: pahang
+  city: Kuantan
+  area: Sungai Karang
+  lat: 3.9006742
+  lng: 103.3649044
+  coordsApproximate: true
+courts:
+  - count: 1
+    surface: hard
+    covered: false
+    lit: "yes"
+access:
+  type: residents_only
+  whoCanPlay: Residents and the guests they invite. Access is subject to building rules.
+booking:
+  channels:
+    - type: resident
+      label: A resident books through building management
+      guide: condo-guest
+  requiresMyKad: unknown
+  requiresLocalNumber: unknown
+  foreignerFriendly: unknown
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 0
+  night: 0
+  note: Free for residents and their invited guests.
+  observedOn: 2026-10-19
+verified:
+  date: 2026-10-19
+  source: visited
+  by: Irfan
+  note: >-
+    Court, access, amenities and price from Irfan, who has played here. Address from PropertyGuru
+    and PropertyGenie listings. Coordinates are the TimurBay development from OpenStreetMap, not the
+    court itself.
+playedHere: {}

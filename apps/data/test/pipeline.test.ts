@@ -149,6 +149,6 @@ describe("parquet views", () => {
     const residents = await db.runAndReadAll(
       `SELECT count(*)::INTEGER AS n FROM '${file}' WHERE access_type = 'residents_only'`,
     );
-    expect(residents.getRowObjects()[0]?.n).toBe(2);
+    expect(residents.getRowObjects()[0]?.n).toBe(3);
   });
 });
