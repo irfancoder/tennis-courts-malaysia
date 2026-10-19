@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@material-symbols/svg-400": "0.48.0",
     "@stylexjs/unplugin": "0.19.1",
     "@tennis/tsconfig": "workspace:*",
     "@types/geojson": "^7946.0.16",

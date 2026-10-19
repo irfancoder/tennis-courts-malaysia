@@ -170,7 +170,7 @@ export default function SuggestForm({ venues, siteKey }: Props) {
           placeholder={
             kind === "edit"
               ? "e.g. Night rate is now RM25/hr, and courts 3 and 4 are closed for resurfacing."
-              : "Who can play, how to book, price, number of courts, lights, covered or not."
+              : "Who can play, how to book, price, number of courts, lights, covered or not, parking, toilets and showers."
           }
           {...stylex.props(ex.input, s.textarea)}
         />

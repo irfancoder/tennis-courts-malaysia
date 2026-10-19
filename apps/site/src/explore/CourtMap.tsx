@@ -3,7 +3,9 @@ import { ACCESS, ACCESS_GROUP_COLOR, type AccessType } from "@tennis/schema";
 import type { FeatureCollection } from "geojson";
 import type { GeoJSONSource, Map as MLMap } from "maplibre-gl";
 import * as maplibregl from "maplibre-gl";
-import maplibreCss from "maplibre-gl/dist/maplibre-gl.css?url";
+// Inlined as a string: as a CSS file it is the only stylesheet in the client build, so StyleX
+// injects into it despite cssInjectionTarget and the rewritten file is never emitted (404).
+import maplibreCss from "maplibre-gl/dist/maplibre-gl.css?raw";
 import maplibreWorker from "maplibre-gl/dist/maplibre-gl-worker.mjs?url";
 import { Protocol } from "pmtiles";
 import { useEffect, useRef } from "preact/hooks";
@@ -19,11 +21,11 @@ type Props = {
 let protocolAdded = false;
 
 function ensureMapCss() {
-  if (document.querySelector(`link[href="${maplibreCss}"]`)) return;
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = maplibreCss;
-  document.head.append(link);
+  if (document.getElementById("maplibre-css")) return;
+  const style = document.createElement("style");
+  style.id = "maplibre-css";
+  style.textContent = maplibreCss;
+  document.head.append(style);
 }
 
 // Peninsular Malaysia + Borneo.

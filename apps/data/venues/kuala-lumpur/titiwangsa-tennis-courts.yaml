@@ -34,6 +34,24 @@ booking:
   requiresMyKad: unknown
   requiresLocalNumber: unknown
   foreignerFriendly: unknown
+amenities:
+  parking:
+    value: free
+    note: Parking spot or roadside.
+  toilet: "yes"
+  shower: "yes"
+  surau:
+    value: "yes"
+    note: "Located at the squash court, upper floor"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore:
+    value: "yes"
+    note: Food court area
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 pricing:
   unit: hour
   day: 10

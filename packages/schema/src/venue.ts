@@ -3,12 +3,14 @@ import {
   ACCESS_TYPES,
   CATEGORIES,
   CHANNELS,
+  PARKING,
   PAYMENTS,
   STATE_SLUGS,
   STATUSES,
   SURFACES,
   TRISTATES,
   VERIFICATION_SOURCES,
+  YES_NO,
 } from "./taxonomy";
 
 const isoDate = v.pipe(v.string(), v.isoDate("Expected a date like 2026-10-07"));
@@ -47,7 +49,6 @@ export const LocationSchema = v.pipe(
     lng: v.optional(lng),
     coordsApproximate: v.optional(v.boolean(), false),
     nearestTransit: v.optional(text),
-    parking: v.optional(text),
   }),
   v.check(
     (l) => Boolean(l.googleMaps) || (l.lat !== undefined && l.lng !== undefined),
@@ -77,6 +78,34 @@ export const StatusSchema = v.strictObject({
   value: v.picklist(STATUSES),
   since: v.optional(isoDate),
   note: v.optional(text),
+});
+
+/** Accepts `shower: "yes"` or `shower: { value: "yes", note: "Cold water only." }`; both become the object form. */
+function noted<const T extends readonly [string, ...string[]]>(values: T) {
+  const value = v.picklist(values);
+  return v.optional(
+    v.pipe(
+      v.union([value, v.strictObject({ value, note: v.optional(text) })]),
+      v.transform((a) => (typeof a === "string" ? { value: a } : a)),
+    ),
+  );
+}
+
+const yesNo = () => noted(YES_NO);
+
+/** Leave an amenity out when it hasn't been checked; "no" is shown to players. */
+export const AmenitiesSchema = v.strictObject({
+  parking: noted(PARKING),
+  toilet: yesNo(),
+  shower: yesNo(),
+  surau: yesNo(),
+  waterFountain: yesNo(),
+  vendingMachine: yesNo(),
+  convenienceStore: yesNo(),
+  seating: yesNo(),
+  tennisWall: yesNo(),
+  ballMachine: yesNo(),
+  racquetRental: yesNo(),
 });
 
 export const ChannelSchema = v.strictObject({
@@ -143,7 +172,7 @@ export const VenueSchema = v.strictObject({
   pricing: v.optional(PricingSchema, {}),
   payment: v.optional(v.array(v.picklist(PAYMENTS)), []),
   hours: v.optional(text),
-  amenities: v.optional(v.array(text), []),
+  amenities: v.optional(AmenitiesSchema, {}),
   photos: v.optional(v.array(PhotoSchema), []),
   verified: VerificationSchema,
   changelog: v.optional(v.array(v.strictObject({ date: isoDate, note: text })), []),
@@ -159,3 +188,4 @@ export const VenueSchema = v.strictObject({
 export type VenueInput = v.InferInput<typeof VenueSchema>;
 export type Venue = v.InferOutput<typeof VenueSchema>;
 export type BookingChannel = v.InferOutput<typeof ChannelSchema>;
+export type Amenities = v.InferOutput<typeof AmenitiesSchema>;

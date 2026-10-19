@@ -219,14 +219,14 @@ The site does **not** take bookings or payments.
 | Group | Fields |
 |---|---|
 | Identity | Name, alternate names/aliases (e.g. Jalan Duta = National Tennis Centre = Kompleks Sukan Jalan Duta), category (federal / council / club / hotel / university / condo / commercial / academy / school), operator |
-| Location | Address, state, city/area, coordinates, nearest landmark / MRT/LRT station, parking notes |
+| Location | Address, state, city/area, coordinates, nearest landmark / MRT/LRT station |
 | Courts | Number of courts, surface per court (hard / artificial grass / clay / other), covered/indoor count, floodlit (yes/no/partial), condition notes |
 | Access | Access type (F2), who can play, what to bring (IC / passport / member card), guest policy, dress code |
 | Booking | Channel(s) (portal URL, app, WhatsApp, phone, counter, walk-in), step summary, link to relevant guide, advance-booking window, max duration, cancellation/rain policy, requires MyKad / +60 number (Y/N/unknown) |
 | Pricing | Day rate, night rate, peak/off-peak, guest fee, currency RM, price-observed date |
 | Payment | Cash / FPX / Touch 'n Go / DuitNow / card |
 | Hours | Opening hours by day, public holiday notes |
-| Amenities | Changing rooms, showers, ball machine, racquet rental, coaching available, café, pro shop |
+| Amenities | Parking (free / paid / both / none), toilets & changing rooms, showers, surau, water fountain, drinks vending machine, convenience store, seating & shade, tennis wall, ball machine for rent, racquets for rent. Each is yes/no (left out = not checked, hidden; "no" is shown) with an optional short note shown as a tooltip |
 | Status | Open / temporarily closed / renovating / converted / closed; status-since date |
 | Trust | Last verified (per field group), verification source type, verified by, change log |
 | Media | Photos (own or licensed/user-submitted with permission) |

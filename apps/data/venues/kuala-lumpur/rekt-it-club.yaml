@@ -30,6 +30,24 @@ booking:
   requiresMyKad: "no"
   requiresLocalNumber: "no"
   foreignerFriendly: "yes"
+amenities:
+  parking:
+    value: paid
+    note: Paid parking in the building (Wisma Kah Motor).
+  toilet: "yes"
+  shower:
+    value: "yes"
+    note: Level 3 - Washroom with shower head located in the cubicle (Male and Female)
+  surau:
+    value: "yes"
+    note: Level 2
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 pricing:
   unit: hour
   day: 55

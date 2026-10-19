@@ -14,10 +14,12 @@ import {
 import AccessBadge from "../../../../components/AccessBadge.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
 import CourtBand from "../../../../components/CourtBand.astro";
+import Facilities from "../../../../components/Facilities.astro";
 import Notice from "../../../../components/Notice.astro";
 import Photos from "../../../../components/Photos.astro";
 import Base from "../../../../layouts/Base.astro";
 import {
+  amenityList,
   channelHref,
   directionsUrl,
   formatDate,
@@ -56,6 +58,7 @@ const nightPrice = rm(v.pricing.night, v.pricing.unit);
 const surfaceText = v.surfaces.map((x) => SURFACE_LABEL[x]).join(", ") || "Not confirmed";
 const litText = v.hasLit ? "Yes" : v.courts.every((c) => c.lit === "no") ? "No" : "Not confirmed";
 const isResidential = v.access.type === "residents_only";
+const amenities = amenityList(v.amenities);
 // Visitor-booking details only matter where the public books directly, not via a member or resident.
 const publicBooking = accessInfo.group === "open" || accessInfo.group === "premium";
 function courtLine(c: SiteVenue["courts"][number]): string {
@@ -184,11 +187,17 @@ const jsonLd = [
             {v.hours && <><dt {...stylex.props(s.dt)}>Hours</dt><dd>{v.hours}</dd></>}
             {v.access.whatToBring && <><dt {...stylex.props(s.dt)}>What to bring</dt><dd>{v.access.whatToBring}</dd></>}
             {v.access.dressCode && <><dt {...stylex.props(s.dt)}>Dress code</dt><dd>{v.access.dressCode}</dd></>}
-            {v.amenities.length > 0 && <><dt {...stylex.props(s.dt)}>Facilities</dt><dd>{v.amenities.join(", ")}</dd></>}
             {v.operator && <><dt {...stylex.props(s.dt)}>Run by</dt><dd>{v.operator}</dd></>}
             {v.website && <><dt {...stylex.props(s.dt)}>Website</dt><dd><a href={v.website} {...stylex.props(page.link)} rel="noopener">Official page</a></dd></>}
           </dl>
         </section>
+
+        {amenities.length > 0 && (
+          <section aria-labelledby="facilities" {...stylex.props(page.section)}>
+            <h2 id="facilities" {...stylex.props(page.h2)}>Facilities</h2>
+            <Facilities items={amenities} />
+          </section>
+        )}
 
         {v.photos.some((p) => p.consent) && (
           <section aria-labelledby="photos" {...stylex.props(page.section)}>
@@ -202,7 +211,6 @@ const jsonLd = [
           <dl {...stylex.props(s.dl)}>
             <dt {...stylex.props(s.dt)}>Address</dt><dd>{v.location.address}</dd>
             {v.location.nearestTransit && <><dt {...stylex.props(s.dt)}>Nearest station</dt><dd>{v.location.nearestTransit}</dd></>}
-            {v.location.parking && <><dt {...stylex.props(s.dt)}>Parking</dt><dd>{v.location.parking}</dd></>}
           </dl>
           <div {...stylex.props(s.actions, page.section)}>
             <a href={directionsUrl(v.location)} {...stylex.props(page.button)} rel="noopener">Get directions</a>

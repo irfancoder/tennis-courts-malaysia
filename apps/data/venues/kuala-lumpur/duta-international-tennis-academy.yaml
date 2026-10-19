@@ -16,19 +16,45 @@ courts:
     lit: "yes"
     note: Operates from the National Tennis Centre courts.
 access:
-  type: open_message
-  whoCanPlay: Anyone. Book court time or coaching by WhatsApp.
+  type: open_online
+  whoCanPlay: Anyone. Book court time online, or coaching by WhatsApp.
 booking:
   channels:
+    - type: portal
+      label: Duta Tennis Booking
+      url: https://dutatennisbooking.com.my/
     - type: whatsapp
-      label: Academy WhatsApp
+      label: Academy WhatsApp (9am-6pm)
       number: +60 12-246 0609
+  cancellation: Cancel at least 4 hours before your session.
   requiresMyKad: "no"
   requiresLocalNumber: "no"
   foreignerFriendly: unknown
-  note: The academy is based at the National Tennis Centre; see that listing for public court bookings.
+  note: >-
+    Book at least 2 hours before you want to play. Only some courts can be booked online, and
+    academy sessions and the weather can take courts out.
+hours: 7am-12am daily.
+amenities:
+  parking:
+    value: free
+    note: Inside complex or by the roadside.
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 verified:
-  date: 2026-10-07
-  source: desk_research
-  note: WhatsApp number from an older third-party source. Irfan has played here.
+  date: 2026-10-19
+  source: official_site
+  note: >-
+    Online booking, hours, booking and cancellation rules and the WhatsApp number from
+    dutatennisbooking.com.my. Its home page doesn't list prices. Irfan has played here.
+changelog:
+  - date: 2026-10-19
+    note: Online booking added.
 playedHere: {}

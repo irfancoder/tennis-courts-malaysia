@@ -17,6 +17,18 @@ booking:
     - type: phone
       label: Call or WhatsApp the venue to book
   note: We don't have a booking number yet. If you've booked here, tell us how.
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "no"
+  surau: "no"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 verified:
   date: 2026-10-08
   source: desk_research
