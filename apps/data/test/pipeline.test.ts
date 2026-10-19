@@ -52,6 +52,45 @@ describe("validation", () => {
       }),
     );
   });
+
+  describe("amenities", () => {
+    const withAmenities = async (amenities: unknown) => {
+      const [raw] = await loadVenueFiles(here("../venues/selangor"));
+      if (!raw) throw new Error("no seed venue");
+      return validateVenues([{ ...raw, data: { ...(raw.data as object), amenities } }]);
+    };
+
+    it("accepts a bare value or a value with a note, and stores both as objects", async () => {
+      const { venues, errors } = await withAmenities({
+        parking: { value: "both", note: "Free at the field; paid in the mall." },
+        shower: "yes",
+        surau: "no",
+      });
+      expect(errors).toEqual([]);
+      expect(venues[0]?.venue.amenities).toEqual({
+        parking: { value: "both", note: "Free at the field; paid in the mall." },
+        shower: { value: "yes" },
+        surau: { value: "no" },
+      });
+    });
+
+    it("defaults to no amenities", async () => {
+      const { venues } = await withAmenities(undefined);
+      expect(venues[0]?.venue.amenities).toEqual({});
+    });
+
+    it.each([
+      [{ jacuzzi: "yes" }, "amenities"],
+      [{ parking: "yes" }, "amenities.parking"],
+      [{ shower: "maybe" }, "amenities.shower"],
+      [{ shower: { value: "yes", note: "" } }, "amenities.shower"],
+    ])("rejects %j", async (amenities, path) => {
+      const { errors } = await withAmenities(amenities);
+      expect(errors).toContainEqual(
+        expect.objectContaining({ path: expect.stringContaining(path) }),
+      );
+    });
+  });
 });
 
 describe("derive", () => {

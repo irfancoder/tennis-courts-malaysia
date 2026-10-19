@@ -1,4 +1,13 @@
-import type { BookingChannel as Channel, ResolvedLocation, Tristate } from "@tennis/schema";
+import {
+  AMENITIES,
+  AMENITY_LABEL,
+  type Amenities,
+  type Amenity,
+  type BookingChannel as Channel,
+  PARKING_LABEL,
+  type ResolvedLocation,
+  type Tristate,
+} from "@tennis/schema";
 
 const dateFmt = new Intl.DateTimeFormat("en-MY", {
   day: "numeric",
@@ -23,6 +32,37 @@ export function rm(
 
 export function yesNo(t: Tristate, yes: string, no: string, unknown = "Not confirmed yet"): string {
   return t === "yes" ? yes : t === "no" ? no : unknown;
+}
+
+export type AmenityItem = {
+  key: "parking" | Amenity;
+  text: string;
+  available: boolean;
+  note?: string;
+};
+
+/** Amenities that have been checked, parking first, in display order. A "no" reads as "No showers". */
+export function amenityList(a: Amenities): AmenityItem[] {
+  const parking: AmenityItem[] = a.parking
+    ? [
+        {
+          key: "parking",
+          text: PARKING_LABEL[a.parking.value],
+          available: a.parking.value !== "none",
+          note: a.parking.note,
+        },
+      ]
+    : [];
+  return parking.concat(
+    AMENITIES.flatMap((key) => {
+      const entry = a[key];
+      if (!entry) return [];
+      const available = entry.value === "yes";
+      const label = AMENITY_LABEL[key];
+      const text = available ? label : `No ${label.toLowerCase()}`;
+      return [{ key, text, available, note: entry.note }];
+    }),
+  );
 }
 
 /** Link target for a booking channel, or undefined when the channel happens in person. */

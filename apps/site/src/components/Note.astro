@@ -1,0 +1,51 @@
+---
+// A small "i" that shows a note on hover, keyboard focus or tap. CSS does the showing; the script
+// makes Safari focus the button on tap (it otherwise skips it) and keeps the note on screen.
+import Info from "@material-symbols/svg-400/rounded/info.svg";
+import * as stylex from "@stylexjs/stylex";
+import { marker, s } from "./Note.styles";
+
+interface Props {
+  /** Unique on the page. */
+  id: string;
+  /** What the note is about, for screen readers: "More about {about}". */
+  about: string;
+}
+const { id, about } = Astro.props;
+---
+<span data-note {...stylex.props(s.wrap, marker)}>
+  <button type="button" aria-label={`More about ${about}`} aria-describedby={id} {...stylex.props(s.button)}><Info {...stylex.props(s.icon)} /></button>
+  <span role="tooltip" id={id} {...stylex.props(s.tip)}><slot /></span>
+</span>
+
+<script>
+  const MARGIN = 8;
+
+  // Shift the note left when it would run off the right edge, e.g. in the second column on phones.
+  function fit(wrap: Element) {
+    const tip = wrap.querySelector<HTMLElement>("[role=tooltip]");
+    if (!tip) return;
+    tip.style.translate = "";
+    requestAnimationFrame(() => {
+      const r = tip.getBoundingClientRect();
+      const over = r.right - (document.documentElement.clientWidth - MARGIN);
+      if (over > 0) tip.style.translate = `${-Math.min(over, r.left - MARGIN)}px 0`;
+    });
+  }
+
+  for (const type of ["mouseover", "focusin"]) {
+    document.addEventListener(type, (e) => {
+      const wrap = (e.target as Element).closest?.("[data-note]");
+      if (wrap) fit(wrap);
+    });
+  }
+  document.addEventListener("click", (e) => {
+    (e.target as Element).closest<HTMLButtonElement>("[data-note] button")?.focus();
+  });
+  document.addEventListener("keydown", (e) => {
+    const active = document.activeElement;
+    if (e.key === "Escape" && active instanceof HTMLElement && active.closest("[data-note]")) {
+      active.blur();
+    }
+  });
+</script>

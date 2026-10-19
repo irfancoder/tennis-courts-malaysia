@@ -46,6 +46,20 @@ booking:
   requiresMyKad: "no"
   requiresLocalNumber: unknown
   foreignerFriendly: "yes"
+amenities:
+  parking:
+    value: free
+    note: Free parking inside the complex.
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 pricing:
   day: 28
   night: 33

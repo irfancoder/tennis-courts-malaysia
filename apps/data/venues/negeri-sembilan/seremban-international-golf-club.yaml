@@ -28,6 +28,18 @@ booking:
     - type: counter
       label: A member books at the club's reception counter
   note: Tuesday to Thursday, 5pm to 9pm, is members' day.
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 pricing:
   day: 0
   night: 0

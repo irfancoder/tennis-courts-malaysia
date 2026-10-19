@@ -33,6 +33,20 @@ booking:
   requiresMyKad: unknown
   requiresLocalNumber: unknown
   foreignerFriendly: "yes"
+amenities:
+  parking:
+    value: free
+    note: Free parking in the complex.
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "no"
+  seating: "yes"
+  tennisWall: "yes"
+  ballMachine: "no"
+  racquetRental: "no"
 payment:
   - cash
 pricing:

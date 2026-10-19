@@ -31,6 +31,20 @@ booking:
       number: +60 6-792 2688
     - type: counter
       label: A member books at the club
+amenities:
+  parking:
+    value: free
+    note: Free parking in & out of the country club
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 pricing:
   day: 0
   night: 0

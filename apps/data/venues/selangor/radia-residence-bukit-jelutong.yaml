@@ -25,6 +25,21 @@ booking:
   requiresMyKad: unknown
   requiresLocalNumber: unknown
   foreignerFriendly: unknown
+amenities:
+  parking:
+    value: both
+    note: Free parking by the roadside. Paid parking in Radia Commercial.
+  toilet: "yes"
+  shower:
+    value: "no"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "yes"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 verified:
   date: 2026-10-07
   source: visited

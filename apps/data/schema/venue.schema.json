@@ -93,10 +93,6 @@
         "nearestTransit": {
           "type": "string",
           "minLength": 1
-        },
-        "parking": {
-          "type": "string",
-          "minLength": 1
         }
       },
       "required": ["address", "state", "city"],
@@ -320,12 +316,265 @@
       "minLength": 1
     },
     "amenities": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1
+      "type": "object",
+      "properties": {
+        "parking": {
+          "anyOf": [
+            {
+              "enum": ["free", "paid", "both", "none"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["free", "paid", "both", "none"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "toilet": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "shower": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "surau": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "waterFountain": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "vendingMachine": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "convenienceStore": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "seating": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "tennisWall": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "ballMachine": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "racquetRental": {
+          "anyOf": [
+            {
+              "enum": ["yes", "no"],
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["yes", "no"],
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["value"],
+              "additionalProperties": false
+            }
+          ]
+        }
       },
-      "default": []
+      "required": [],
+      "additionalProperties": false,
+      "default": {}
     },
     "photos": {
       "type": "array",

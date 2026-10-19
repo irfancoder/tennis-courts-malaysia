@@ -1,0 +1,54 @@
+---
+// Icons: Material Symbols (Rounded), Apache-2.0, inlined at build time.
+import TennisWall from "@material-symbols/svg-400/rounded/brick.svg";
+import Seating from "@material-symbols/svg-400/rounded/chair_umbrella.svg";
+import ConvenienceStore from "@material-symbols/svg-400/rounded/local_convenience_store.svg";
+import Parking from "@material-symbols/svg-400/rounded/local_parking.svg";
+import Surau from "@material-symbols/svg-400/rounded/mosque.svg";
+import Shower from "@material-symbols/svg-400/rounded/shower.svg";
+import BallMachine from "@material-symbols/svg-400/rounded/sports_baseball.svg";
+import RacquetRental from "@material-symbols/svg-400/rounded/sports_tennis.svg";
+import VendingMachine from "@material-symbols/svg-400/rounded/water_bottle.svg";
+import WaterFountain from "@material-symbols/svg-400/rounded/water_drop.svg";
+import Toilet from "@material-symbols/svg-400/rounded/wc.svg";
+import * as stylex from "@stylexjs/stylex";
+import type { AmenityItem } from "../lib/format";
+import { s } from "./Facilities.styles";
+import Note from "./Note.astro";
+
+interface Props {
+  items: AmenityItem[];
+}
+const { items } = Astro.props;
+
+const ICONS: Record<AmenityItem["key"], typeof Parking> = {
+  parking: Parking,
+  toilet: Toilet,
+  shower: Shower,
+  surau: Surau,
+  waterFountain: WaterFountain,
+  vendingMachine: VendingMachine,
+  convenienceStore: ConvenienceStore,
+  seating: Seating,
+  tennisWall: TennisWall,
+  ballMachine: BallMachine,
+  racquetRental: RacquetRental,
+};
+---
+<ul {...stylex.props(s.list)}>
+  {items.map((a) => {
+    const Icon = ICONS[a.key];
+    return (
+      <li {...stylex.props(s.item, !a.available && s.itemNo)}>
+        <span aria-hidden="true" {...stylex.props(s.icon, !a.available && s.iconNo)}>
+          <Icon {...stylex.props(s.svg)} />
+          {!a.available && <span {...stylex.props(s.slash)} />}
+        </span>
+        <span>
+          {a.text}
+          {a.note && <Note id={`note-${a.key}`} about={a.text}>{a.note}</Note>}
+        </span>
+      </li>
+    );
+  })}
+</ul>

@@ -38,6 +38,26 @@ booking:
   note: >-
     The office answers enquiries during office hours only. Akademi Sukan can cancel bookings
     without notice.
+amenities:
+  parking:
+    value: free
+    note: Free parking beside the courts
+  toilet: "yes"
+  shower: "no"
+  surau:
+    value: "yes"
+    note: "Masjid UPM"
+  waterFountain: "no"
+  vendingMachine:
+    value: "yes"
+    note: "Near Coopmart Koperasi UPM"
+  convenienceStore:
+    value: "yes"
+    note: "Coopmart Koperasi UPM"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 pricing:
   unit: hour
   day: 20

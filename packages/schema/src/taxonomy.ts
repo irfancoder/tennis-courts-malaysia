@@ -181,6 +181,44 @@ export const PAYMENT_LABEL: Record<Payment, string> = {
 export const TRISTATES = ["yes", "no", "unknown"] as const;
 export type Tristate = (typeof TRISTATES)[number];
 
+export const YES_NO = ["yes", "no"] as const;
+
+export const PARKING = ["free", "paid", "both", "none"] as const;
+export type Parking = (typeof PARKING)[number];
+export const PARKING_LABEL: Record<Parking, string> = {
+  free: "Free parking",
+  paid: "Paid parking",
+  both: "Free and paid parking",
+  none: "No parking",
+};
+
+/** In display order. Labels are plural nouns so "No …" reads naturally. */
+export const AMENITIES = [
+  "toilet",
+  "shower",
+  "surau",
+  "waterFountain",
+  "vendingMachine",
+  "convenienceStore",
+  "seating",
+  "tennisWall",
+  "ballMachine",
+  "racquetRental",
+] as const;
+export type Amenity = (typeof AMENITIES)[number];
+export const AMENITY_LABEL: Record<Amenity, string> = {
+  toilet: "Toilets & changing rooms",
+  shower: "Showers",
+  surau: "Surau",
+  waterFountain: "Water fountain",
+  vendingMachine: "Drinks vending machine",
+  convenienceStore: "Convenience store",
+  seating: "Seating & shade",
+  tennisWall: "Tennis wall",
+  ballMachine: "Ball machine for rent",
+  racquetRental: "Racquets for rent",
+};
+
 export const VERIFICATION_SOURCES = [
   "visited",
   "called",

@@ -29,6 +29,20 @@ With `pnpm dev` running, saving a venue YAML (or a guide) rebuilds the data in a
 4. `pnpm build`. Validation errors name the file and field.
 5. Commit and push to `main`. CI rebuilds, publishes the parquet views to R2 and deploys.
 
+Know what's on site? Fill in `amenities`. Leave out anything you haven't checked; a `"no"` is shown to players. Add a `note` to show it as a tooltip:
+
+```yaml
+amenities:
+  parking:
+    value: both # free, paid, both or none
+    note: Free at the field; paid in the mall basement.
+  toilet: "yes"
+  shower:
+    value: "yes"
+    note: Cold water only.
+  surau: "no"
+```
+
 Played there yourself? Fill in `playedHere` (note, best time, last played).
 
 ## Corrections from players

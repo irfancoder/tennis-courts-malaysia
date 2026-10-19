@@ -25,6 +25,23 @@ booking:
   requiresMyKad: unknown
   requiresLocalNumber: unknown
   foreignerFriendly: unknown
+amenities:
+  parking:
+    value: free
+    note: Free parking by the roadside.
+  toilet: "yes"
+  shower:
+    value: "no"
+  surau: "no"
+  waterFountain: "no"
+  vendingMachine:
+    value: "yes"
+    note: Located on ground floor (G)
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
 verified:
   date: 2026-10-07
   source: visited
