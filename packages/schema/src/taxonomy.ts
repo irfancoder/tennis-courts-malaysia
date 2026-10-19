@@ -138,10 +138,11 @@ export const CATEGORY_LABEL: Record<Category, string> = {
   academy: "Tennis academy",
 };
 
-export const SURFACES = ["hard", "artificial_grass", "clay", "carpet", "other"] as const;
+export const SURFACES = ["hard", "grass", "artificial_grass", "clay", "carpet", "other"] as const;
 export type Surface = (typeof SURFACES)[number];
 export const SURFACE_LABEL: Record<Surface, string> = {
   hard: "Hard court",
+  grass: "Grass",
   artificial_grass: "Artificial grass",
   clay: "Clay",
   carpet: "Carpet",

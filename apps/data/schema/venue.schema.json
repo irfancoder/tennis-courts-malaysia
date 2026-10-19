@@ -108,7 +108,7 @@
             "minimum": 1
           },
           "surface": {
-            "enum": ["hard", "artificial_grass", "clay", "carpet", "other"],
+            "enum": ["hard", "grass", "artificial_grass", "clay", "carpet", "other"],
             "type": "string"
           },
           "covered": {

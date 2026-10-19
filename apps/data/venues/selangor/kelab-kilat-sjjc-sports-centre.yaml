@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kelab Kilat SJJC Sports Centre
+category: club
+operator: Kelab Kilat SJJC
+location:
+  address: Kelab Kilat SJJC Sports Centre, Stesen Janakuasa Connaught Bridge, B5, Bukit Jati, Klang, Selangor
+  state: selangor
+  city: Klang
+  area: Bukit Jati
+  lat: 3.0392763
+  lng: 101.4694697
+courts:
+- count: 1
+access:
+  type: open_online
+  whoCanPlay: Anyone. Book on Courtsite.
+booking:
+  channels:
+  - type: app
+    label: Courtsite
+    url: https://www.courtsite.my/centre/Kelab%20Kilat%20SJJC%20Sports%20Centre/cmqapdezi007y076u977zwpzb
+    guide: courtsite
+amenities:
+  parking: free
+  toilet: 'no'
+  shower: 'no'
+  surau: 'no'
+  waterFountain: 'no'
+  vendingMachine: 'no'
+  convenienceStore: 'no'
+  seating: 'no'
+  tennisWall: 'no'
+  ballMachine: 'no'
+  racquetRental: 'no'
+pricing:
+  day: 40
+  night: 40
+  unit: hour
+  note: 'Normal price RM40/hour 8am-12am. Promo until 30 Nov 2026: RM30/hour, RM55 for 2 hours, RM75 for
+    3 hours.'
+  observedOn: '2026-10-19'
+hours: 8am-12am daily
+verified:
+  date: '2026-10-19'
+  source: desk_research
+  note: From the venue's Courtsite page (read 2026-10-19). Court count, pricing, hours and parking. Coordinates
+    from the Courtsite map link.

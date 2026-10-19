@@ -1,4 +1,4 @@
-import { mkdtemp, readFile } from "node:fs/promises";
+import { copyFile, mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -43,7 +43,7 @@ describe("validation", () => {
     const [raw] = await loadVenueFiles(here("../venues/selangor"));
     if (!raw) throw new Error("no seed venue");
     const data = raw.data as { location: Record<string, unknown> };
-    const { googleMaps: _, ...noPlace } = data.location;
+    const { googleMaps: _, lat: _lat, lng: _lng, ...noPlace } = data.location;
     const { errors } = validateVenues([{ ...raw, data: { ...data, location: noPlace } }]);
     expect(errors).toContainEqual(
       expect.objectContaining({
@@ -124,6 +124,7 @@ describe("derive", () => {
 describe("parquet views", () => {
   it("answers the explore page's default query", async () => {
     const outDir = await mkdtemp(join(tmpdir(), "tennis-data-"));
+    await copyFile(here("../geo-cache.json"), join(outDir, "geo-cache.json"));
     await runPipeline({
       venuesDir: here("../venues"),
       outDir,
@@ -140,6 +141,7 @@ describe("parquet views", () => {
       `SELECT slug FROM '${file}' WHERE access_type LIKE 'open_%' AND has_covered ORDER BY slug`,
     );
     expect(result.getRowObjects().map((r) => r.slug)).toEqual([
+      "kuala-lumpur-indoor-courts-klic",
       "rekt-it-club",
       "tun-razak-national-tennis-centre",
     ]);

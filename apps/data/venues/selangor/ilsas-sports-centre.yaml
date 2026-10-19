@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: ILSAS Sports Centre
+aliases:
+  - Institut Latihan Sultan Ahmad Shah sports centre
+category: commercial
+operator: TNB Integrated Learning Solution Sdn Bhd (ILSAS)
+location:
+  address: TNB Integrated Learning Solution Sdn Bhd, Jalan Ikram - UNITEN, 43650 Bandar Baru Bangi, Selangor
+  state: selangor
+  city: Bandar Baru Bangi
+  area: Bangi
+  googleMaps: https://maps.app.goo.gl/2T1PYLiyeEzcMgRF7
+courts:
+  - count: 2
+access:
+  type: open_online
+  whoCanPlay: Anyone. Book on Courtsite.
+booking:
+  channels:
+    - type: app
+      label: Courtsite
+      url: https://www.courtsite.my/centre/ILSAS%20Sports%20Centre/clmyjhjmgddlejyaxw3ck37mw
+      guide: courtsite
+  note: Court 1 weekdays 7am-3pm only; court 2 to 7pm except Thursday (to 3pm).
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 20
+  unit: hour
+  note: RM20/hour.
+  observedOn: "2026-10-19"
+hours: 7am-7pm (weekday hours vary by court)
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    From the venue's Courtsite page (read 2026-10-19). Court count, pricing, hours and amenities.
+    Operator category set to commercial (corporate training institute); no closer category in the schema.
+    Coordinates from the Courtsite map link.

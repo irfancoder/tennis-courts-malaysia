@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Pusat Komuniti Taman Tun Dr Ismail
+aliases:
+  - Pusat Komuniti TTDI
+category: council
+operator: Dewan Bandaraya Kuala Lumpur (DBKL)
+location:
+  address: Pusat Komuniti Taman Tun Dr Ismail, Jalan Athinahappan, Taman Tun Dr Ismail, 60000 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Taman Tun Dr Ismail
+  googleMaps: https://maps.app.goo.gl/hekpqBabgJfdz1rf9
+courts:
+  - count: 2
+    note: Courts 1 and 2, at Pusat Komuniti TTDI.
+  - count: 1
+    note: Court 3, at Jalan Datuk Sulaiman, TTDI (separate site).
+access:
+  type: open_online
+  nonGuestBookable: unknown
+  whoCanPlay: Anyone. Public DBKL courts.
+booking:
+  channels:
+    - type: portal
+      label: Tempah@KL (web)
+      url: https://tempahkl.dbkl.gov.my/
+      guide: dbkl
+    - type: app
+      label: Tempah@KL (mobile)
+      url: https://play.google.com/store/apps/details?id=my.gov.tempahkl.app
+      guide: dbkl
+    - type: phone
+      label: Pusat Komuniti TTDI
+      number: +60 3-7728 7591
+    - type: phone
+      label: Pusat Komuniti TTDI (mobile)
+      number: +60 12-695 7109
+  steps:
+    - Book the court on Tempah@KL.
+    - Go to the community centre within 3 days of booking to confirm it.
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "no"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "yes"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 5
+  night: 10
+  unit: hour
+  note: RM5/hour 8am-7pm; after 7pm listed as RM20 per 2 hours, per Tempah@KL.
+  observedOn: "2026-10-19"
+verified:
+  date: "2026-10-19"
+  source: official_site
+  by: Irfan
+  note:
+    Tempah@KL venue per Irfan. Courts, address, phones, coordinates, rates, confirmation rule and
+    amenities from the Tempah@KL facility page.

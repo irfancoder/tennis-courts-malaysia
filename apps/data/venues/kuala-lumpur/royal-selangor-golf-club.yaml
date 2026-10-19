@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Royal Selangor Golf Club
+aliases:
+  - RSGC
+category: club
+operator: The Royal Selangor Golf Club
+website: https://rsgc.com.my/sports/
+location:
+  address: Jalan Tun Razak, 55000 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Jalan Tun Razak
+  googleMaps: https://maps.app.goo.gl/hhYCPC2VE6kKFsNr6
+courts:
+  - count: 7
+    surface: grass
+    lit: "yes"
+    note: Natural grass courts; run 10am-7pm, lights off after 7:30pm (finishing players may switch on).
+  - count: 3
+    surface: hard
+    covered: true
+    lit: "yes"
+    note:
+      Hard courts, can be lit until 10pm. Club also mentions covered/turf courts 7am-10pm (count not
+      stated). GTN lists 12 courts; club page says 10.
+access:
+  type: membership
+  whoCanPlay: Members and their guests; private membership club, public visitors not permitted.
+  dressCode: Proper sports attire; torn or ill-fitting garments not allowed.
+  nonGuestBookable: "no"
+booking:
+  channels:
+    - type: app
+      label: RSGC Mobile App (members)
+    - type: phone
+      label: Sports Department ext 405
+      number: +60 3-9206 3333
+  note:
+    First come, first served via RSGC app. Children under 12 must be supervised by an adult member;
+    under-15s need management permission for floodlit courts. sports@rsgc.com.my
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+hours: Grass courts 10am-7pm; covered/turf (hard) courts 7am-10pm
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    "Courts, hours, rules, booking from rsgc.com.my/sports; address and coordinates from Global Tennis
+    Network (Wikipedia: entrance at Jalan Raja Chulan/Jalan Tun Razak)."

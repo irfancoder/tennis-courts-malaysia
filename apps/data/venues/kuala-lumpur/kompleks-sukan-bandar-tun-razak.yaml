@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kompleks Sukan Bandar Tun Razak
+aliases:
+  - Tun Razak City Sports Complex
+category: council
+operator: Dewan Bandaraya Kuala Lumpur (DBKL)
+website: https://www.dbkl.gov.my/en/fasiliti-awam/kompleks-sukan
+location:
+  address: Jalan Yaacob Latif, Bandar Tun Razak, Cheras, 56000 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Bandar Tun Razak
+  googleMaps: https://maps.app.goo.gl/8n7f8Wy55QmtSFFD8
+courts:
+  - count: 1
+access:
+  type: open_online
+  whoCanPlay: Anyone. Public DBKL courts.
+booking:
+  channels:
+    - type: portal
+      label: Tempah@KL (web)
+      url: https://tempahkl.dbkl.gov.my/
+      guide: dbkl
+    - type: app
+      label: Tempah@KL (mobile)
+      url: https://play.google.com/store/apps/details?id=my.gov.tempahkl.app
+      guide: dbkl
+    - type: phone
+      label: Kompleks Sukan Bandar Tun Razak
+      number: +60 3-9174 1582
+  note: Booked on Tempah@KL (web or app).
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "no"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  note:
+    Tempah@KL tennis rate text is garbled (reads '8.00 am - 7.00 pm (7RM5 Sejam)'); likely RM5/hour
+    by day but not confirmed. Check in the app.
+  observedOn: "2026-10-19"
+verified:
+  date: "2026-10-19"
+  source: official_site
+  by: Irfan
+  note:
+    Tempah@KL venue per Irfan. Court count, address, phone, coordinates and amenities from the Tempah@KL
+    facility page. Tennis price unreadable on that page.

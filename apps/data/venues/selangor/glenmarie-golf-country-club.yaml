@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Glenmarie Golf & Country Club
+aliases:
+  - Hilton Shah Alam Glenmarie Recreation Centre
+  - Glenmarie Tennis Courts
+category: club
+operator: Glenmarie Golf & Country Club
+website: https://www.glenmarie.com.my/facilities/tennis-court
+location:
+  address: No. 3, Jalan Usahawan U1/8, Seksyen U1, 40150 Shah Alam, Selangor
+  state: selangor
+  city: Shah Alam
+  area: Seksyen U1 / Glenmarie
+  googleMaps: https://maps.app.goo.gl/LN1MvTpRBqKg2v4d7
+courts:
+  - count: 5
+    lit: "yes"
+    covered: false
+    surface: hard
+    note:
+      Indoor and outdoor courts (official site, no counts); GTN lists 5 incl. indoor; tennisround lists
+      3. Spotlight charge RM10 per 2 hours per court.
+access:
+  type: guest_of_member
+  whoCanPlay: Social/golf club members, member guests, and Hilton Shah Alam Glenmarie hotel guests
+booking:
+  channels:
+    - type: whatsapp
+      label: Tennis booking WhatsApp
+      number: +60 12-647 4275
+    - type: phone
+      label: Hotline
+      number: +60 3-7803 9090
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental:
+    value: "yes"
+    note: RM10 net
+pricing:
+  guestFee: 17
+  note:
+    Member guest / hotel guest RM17 weekday, RM22 weekend per person per hour (incl. 8% tax); member
+    RM11; court charge RM10; spotlight RM10/2h.
+  observedOn: "2026-10-19"
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    Rates, access, contacts, address from glenmarie.com.my tennis page; count/coords from GTN/tennisround;
+    Hilton link from hotels-with-tennis.com.

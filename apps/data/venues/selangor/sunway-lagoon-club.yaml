@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Sunway Lagoon Club
+category: club
+operator: Sunway Lagoon Club
+website: https://www.sunwaylagoonclub.com/
+location:
+  address: No 3, Jalan Lagoon Timur, Bandar Sunway, 47500 Subang Jaya, Selangor
+  state: selangor
+  city: Subang Jaya
+  area: Bandar Sunway
+  lat: 3.0683403
+  lng: 101.6106568
+courts:
+- count: 4
+access:
+  type: guest_of_member
+  whoCanPlay: Members; up to 3 guests per member, registered at Main Reception
+booking:
+  channels:
+  - type: phone
+    label: Sports court booking
+    number: +60 3-5639 8699
+  advanceDays: 2
+  maxHours: 1
+  note: Bookings 48 hours ahead, 1 hour per member per booking. Members' Night Wednesdays 6:30-10:30pm.
+amenities:
+  parking: none
+  toilet: 'no'
+  shower: 'no'
+  surau: 'no'
+  waterFountain: 'no'
+  vendingMachine: 'no'
+  convenienceStore: 'no'
+  seating: 'no'
+  tennisWall: 'no'
+  ballMachine: 'no'
+  racquetRental: 'no'
+pricing:
+  guestFee: 20
+  note: Guest fee RM20 weekdays / RM25 weekends per guest; court rate for members not stated.
+  observedOn: '2026-10-19'
+hours: 7:30am-10:30pm daily
+verified:
+  date: '2026-10-19'
+  source: official_site
+  note: All facts from sunwaylagoonclub.com recreation-facilities and contact pages. Coordinates from
+    OpenStreetMap (Nominatim).
