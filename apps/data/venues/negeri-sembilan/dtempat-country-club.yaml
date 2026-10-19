@@ -32,9 +32,13 @@ booking:
     - type: counter
       label: A member books at the club
 pricing:
+  day: 0
+  night: 0
   guestFee: 20
   unit: session
-  note: Non-members pay RM20 per entry when a member invites them.
+  note: >-
+    Free for members. Guests a member invites pay only the RM20 entrance fee, with no court
+    charge.
   observedOn: 2026-10-19
 verified:
   date: 2026-10-19
