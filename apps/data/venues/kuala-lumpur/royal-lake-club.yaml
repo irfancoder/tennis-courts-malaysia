@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Royal Lake Club
+aliases:
+  - Kelab Taman Perdana Diraja
+category: club
+operator: Royal Lake Club
+website: https://royallakeclub.org.my/sports-recreation/tennis-courts/
+location:
+  address: Taman Tasek Perdana, Jalan Cenderamulia, Off Jalan Parlimen, 50480 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Taman Tasik Perdana
+  googleMaps: https://maps.app.goo.gl/G4xQZM4uszsTgmNZA
+courts:
+  - count: 4
+    lit: "yes"
+    surface: artificial_grass
+    covered: false
+    note: Courts 1-4 artificial grass. Club says courts offer day and night play.
+  - count: 3
+    surface: hard
+    lit: "yes"
+    covered: false
+    note: Courts 5-7 hard. Courts 1-5 adults (court 5 coaching in non-peak), court 6 children, court 7 coaching.
+access:
+  type: membership
+  nonGuestBookable: unknown
+booking:
+  channels:
+    - type: phone
+      label: Club main line
+      number: +60 3-2698 7878
+  note: Club page does not state booking method, fees or guest policy; email inquire@royallakeclub.org.my.
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+hours: Daily 6:30am-11:00pm (lessons 7am-10pm)
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    Courts, surfaces, hours, contact from club's tennis page; coordinates from Global Tennis Network
+    listing.

@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kuala Lumpur Golf & Country Club
+aliases:
+  - KLGCC
+  - TPC Kuala Lumpur
+category: club
+operator: Kuala Lumpur Golf & Country Club
+website: https://www.klgcc.com/discover/club-facilities/tennis-courts
+location:
+  address: 10, Jalan 1/70D, Off Jalan Bukit Kiara, 60000 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Bukit Kiara
+  googleMaps: https://maps.app.goo.gl/3JZhg2gAbXyBsGM89
+courts:
+  - count: 6
+    surface: hard
+    lit: "yes"
+    covered: false
+    note:
+      6 floodlit courts per club site; surface 'hard' per Global Tennis Network (which lists only 3
+      courts).
+access:
+  type: guest_of_member
+  whoCanPlay: Members and their guests of all ages
+  dressCode:
+    Proper attire; no sleeveless shirts, jeans or slippers; non-marking soles only (no studded,
+    spiked or black-soled shoes).
+  nonGuestBookable: "no"
+booking:
+  channels:
+    - type: counter
+      label: Sports Counter
+    - type: phone
+      label: Call +60 3-2011 9188 (ext:165/162/161)
+      number: +60 3-2011 9188
+  advanceDays: 3
+  maxHours: 2
+  cancellation: Cancel at least 4 hours before; late cancellation RM26.50 nett charged to member account.
+  note: One court per member per session.
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "yes"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  guestFee: 21.6
+  unit: hour
+  note: Guest charge RM21.60 per guest per hour (club site).
+  observedOn: "2026-10-19"
+hours: 7am-10pm daily
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    Courts, hours, booking, guest fee from klgcc.com tennis page; coordinates/surface from Global
+    Tennis Network.

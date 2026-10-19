@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kuala Lumpur Indoor Courts (KLIC)
+aliases:
+  - KLIC
+category: commercial
+operator: Kuala Lumpur Indoor Courts
+location:
+  address: Kuala Lumpur Indoor Court, Chow Kit, Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Chow Kit
+  googleMaps: https://maps.app.goo.gl/qzw4sutoF8JCpVDSA
+courts:
+  - count: 10
+    lit: "yes"
+    covered: true
+    surface: "hard"
+    note: Indoor courts.
+access:
+  type: open_online
+  whoCanPlay: Anyone. Book on Courtsite.
+booking:
+  channels:
+    - type: app
+      label: Courtsite
+      url: https://www.courtsite.my/centre/Kuala%20Lumpur%20Indoor%20Courts%20(KLIC)%20/cmpoybgnb0bkd0866pbqv43kc
+      guide: courtsite
+amenities:
+  parking: "free"
+  toilet:
+    value: "no"
+    note: "Visitors noted to use toilet from The Hood nearby"
+  shower:
+    value: "no"
+    note: "Visitors noted to use shower from The Hood nearby"
+  surau:
+    value: "yes"
+    note: "Surau Perkim"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 60
+  night: 60
+  unit: hour
+  note:
+    "Singles, normal price: weekdays 6-11am RM60, 11am-4pm RM50, 4pm-12am RM60; weekends and public
+    holidays RM60. Doubles: weekdays 6-11am RM80, 11am-4pm RM60. A weekday promo from RM40/hour was running."
+  observedOn: "2026-10-19"
+hours: 6am-12am daily
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    From the venue's Courtsite page (read 2026-10-19). Court count, pricing, hours and amenities.
+    Coordinates from the Courtsite map link.

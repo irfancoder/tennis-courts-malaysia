@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Kompleks Sukan Bangsar
+aliases:
+  - Bangsar Sports Complex
+category: council
+operator: Dewan Bandaraya Kuala Lumpur (DBKL)
+website: https://www.dbkl.gov.my/en/fasiliti-awam/kompleks-sukan
+location:
+  address: Jalan Terasek 3, Bangsar Baru, 59100 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Bangsar
+  googleMaps: https://maps.app.goo.gl/ySk6jERFfNVjCK418
+courts:
+  - count: 4
+    surface: hard
+    lit: "yes"
+    note: Count/surface/lights per Global Tennis Network.
+access:
+  type: open_online
+  nonGuestBookable: "yes"
+  whoCanPlay: Anyone. Public DBKL courts.
+booking:
+  channels:
+    - type: portal
+      label: Tempah@KL (web)
+      url: https://tempahkl.dbkl.gov.my/
+      guide: dbkl
+    - type: app
+      label: Tempah@KL (mobile)
+      url: https://play.google.com/store/apps/details?id=my.gov.tempahkl.app
+      guide: dbkl
+    - type: phone
+      label: Kompleks Sukan Bangsar
+      number: +60 3-2284 1150
+  note: Booked on Tempah@KL (web or app).
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "no"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 10
+  unit: hour
+  note:
+    "'From RM10 per hour' per Time Out, 2 May 2014; a 2012 DBKL rate list gave RM10 day (8am-7pm)
+    / RM20 night (8pm-midnight). Current rate not confirmed."
+  observedOn: "2026-10-19"
+verified:
+  date: "2026-10-19"
+  source: user_report
+  note:
+    Irfan confirmed on 2026-10-19 that this venue's tennis courts are bookable on Tempah@KL. Address/phone
+    from DBKL sports complex page; courts/coords from Global Tennis Network; price from Time Out 2014
+    and 2012 rate blog; booking system from DBKL Tempah@KL page.
+  by: Irfan

@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Bayan Club @ Seri Kembangan
+category: club
+operator: Bayan Club
+location:
+  address: Jalan BS 3/12, Taman Bukit Serdang, 43300 Seri Kembangan, Selangor
+  state: selangor
+  city: Seri Kembangan
+  area: Taman Bukit Serdang
+  googleMaps: https://maps.app.goo.gl/ifft6x2gH4NKbZ7e6
+courts:
+  - count: 1
+    lit: "no"
+    covered: false
+    surface: hard
+access:
+  type: open_online
+  whoCanPlay: Anyone. Book on Courtsite.
+booking:
+  channels:
+    - type: app
+      label: Courtsite
+      url: https://www.courtsite.my/centre/Bayan%20Club%20%40%20Seri%20Kembangan/clag9wjif2bk006a0ga2f3tpf
+      guide: courtsite
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 20
+  unit: hour
+  note: Weekdays 9am-10pm RM20/hour; weekends and public holidays 8am-10pm RM30/hour.
+  observedOn: "2026-10-19"
+hours: Weekdays 9am-10pm, weekends 8am-10pm
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    From the venue's Courtsite page (read 2026-10-19). Court count, pricing, hours and amenities.
+    Coordinates from the Courtsite map link.

@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Pusat Komuniti Bukit Bandaraya
+category: council
+operator: Dewan Bandaraya Kuala Lumpur (DBKL)
+location:
+  address: Lot 52383, Jalan Medang Tanduk, Bukit Bandaraya, Bangsar, 50450 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: Bangsar (Bukit Bandaraya)
+  googleMaps: https://maps.app.goo.gl/YYupJyCyyLZ8dWiM9
+courts:
+  - count: 1
+    covered: false
+    lit: "yes"
+    surface: hard
+    note: Outdoor.
+access:
+  type: open_online
+  nonGuestBookable: "yes"
+  whoCanPlay: Anyone. Public DBKL courts.
+booking:
+  channels:
+    - type: portal
+      label: Tempah@KL (web)
+      url: https://tempahkl.dbkl.gov.my/
+      guide: dbkl
+    - type: app
+      label: Tempah@KL (mobile)
+      url: https://play.google.com/store/apps/details?id=my.gov.tempahkl.app
+      guide: dbkl
+    - type: phone
+      label: Pusat Komuniti Bukit Bandaraya supervisor
+      number: +60 12-272 7207
+  note:
+    Tennis is priced on the Tempah@KL page but was not in its bookable activity list on 2026-10-19
+    (only badminton and weddings). Call the supervisor if tennis does not show in the app.
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "no"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 5
+  night: 10
+  unit: hour
+  note: Day rate 8am-7pm, night rate 7pm-12am, per Tempah@KL.
+  observedOn: "2026-10-19"
+hours: 8am-12am
+verified:
+  date: "2026-10-19"
+  source: official_site
+  by: Irfan
+  note:
+    Tempah@KL venue per Irfan. Court, address, phone, coordinates, rates and amenities from the Tempah@KL
+    facility page.

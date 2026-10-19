@@ -1,4 +1,32 @@
 {
+  "https://maps.app.goo.gl/2T1PYLiyeEzcMgRF7": {
+    "lat": 2.9781396,
+    "lng": 101.7371123,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Ilsas+Tennis+Court+2/@2.9781158,101.7366637,202m/data=!3m1!1e3!4m6!3m5!1s0x31cdcb007c682413:0x29a314f051ae2a7f!8m2!3d2.9781396!4d101.7371123!16s%2Fg%2F11y3bbhsqj?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=e9f4a470-3b59-45b0-bca9-6d680bb8c241",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/3Ab2oRU8rCwapPNLA": {
+    "lat": 3.1557927,
+    "lng": 101.7119498,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Mandarin+Oriental,+Kuala+Lumpur/@3.1557927,101.7093749,17z/data=!3m1!4b1!4m9!3m8!1s0x31cc37d40feb449f:0x5bb866cf36359c4a!5m2!4m1!1i2!8m2!3d3.1557927!4d101.7119498!16s%2Fm%2F0cv_2ys?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=1099a004-50a7-4e6f-b1fe-349494f7bd95",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/3JZhg2gAbXyBsGM89": {
+    "lat": 3.1399604,
+    "lng": 101.6407392,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/KLGCC+-+Kuala+Lumpur+Golf+%26+Country+Club,+Bukit+Kiara/@3.1399604,101.6381643,17z/data=!3m1!4b1!4m9!3m8!1s0x31cc4929250d75a7:0x2d92d027fb0f9084!5m2!4m1!1i2!8m2!3d3.1399604!4d101.6407392!16zL20vMGcya3po?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=e0f6068e-7d76-4980-b37a-61a2e9775214",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/8n7f8Wy55QmtSFFD8": {
+    "lat": 3.0971555,
+    "lng": 101.7216875,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Kompleks+Sukan+Bandar+Tun+Razak/@3.0971555,101.7191126,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc35ee84a42dbd:0xc234e1a57168440f!8m2!3d3.0971555!4d101.7216875!16s%2Fg%2F11bwygtdnn?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=816ed305-f78f-4221-8215-e6279b4449bd",
+    "resolvedOn": "2026-10-19"
+  },
   "https://maps.app.goo.gl/CYfz7TL1hQK9F5JY8": {
     "lat": 2.9993632,
     "lng": 101.6792692,
@@ -13,11 +41,74 @@
     "resolvedUrl": "https://www.google.com/maps/place/Rekt-it+Club+Tennis+Academy/@3.1882959,101.6785898,1174m/data=!3m3!1e3!4b1!5s0x31cc487456d73775:0xe88990780ed63bf2!4m6!3m5!1s0x31cc498c9d7ae9d5:0x15dd80b90949f8e2!8m2!3d3.1882959!4d101.6811647!16s%2Fg%2F11vf3mfwgy?entry=tts&g_ep=EgoyMDI2MTAwNS4wIPu8ASoASAFQAw%3D%3D&skid=b6be529d-54c8-4957-9669-fb34930ff14f",
     "resolvedOn": "2026-10-08"
   },
+  "https://maps.app.goo.gl/G4xQZM4uszsTgmNZA": {
+    "lat": 3.1468722,
+    "lng": 101.6834383,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Royal+Lake+Club/@3.1468722,101.6834383,17z/data=!4m6!3m5!1s0x31cc49b600a92d99:0x9153ff6a87ed8390!8m2!3d3.1468722!4d101.6834383!16s%2Fg%2F1pp2wyvbk?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=80252c1b-b1b3-4c99-a628-4c6da6796944",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/hekpqBabgJfdz1rf9": {
+    "lat": 3.1477778,
+    "lng": 101.6222222,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Taman+Tun+Dr+Ismail+Community+Centre/@3.1477778,101.6196473,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc492944e84b03:0x544a85138adedccd!8m2!3d3.1477778!4d101.6222222!16s%2Fg%2F1tfn074k?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=04d17df1-a3eb-406c-bf8c-ad91fab03384",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/hhYCPC2VE6kKFsNr6": {
+    "lat": 3.1453487,
+    "lng": 101.7260818,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/The+Royal+Selangor+Golf+Club/@3.1453487,101.7260818,17z/data=!4m6!3m5!1s0x31cc363678852007:0x3ecf5d2020010071!8m2!3d3.1453487!4d101.7260818!16zL20vMGNnZmYz?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=1842954f-8739-4d99-bde3-f8c5697707c6",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/ifft6x2gH4NKbZ7e6": {
+    "lat": 3.0147802,
+    "lng": 101.6941474,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Bayan+Club+Seri+Kembangan/@3.0147802,101.6915725,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdb542963fd837:0x80c0162556250a35!8m2!3d3.0147802!4d101.6941474!16s%2Fg%2F11g9qn0sbq?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=0df2c68a-d0ad-4c28-b0ed-c42e9e12496d",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/iuy9G79FgobHGVB47": {
+    "lat": 3.1074916,
+    "lng": 101.478077,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Canopy+Club,+Setia+Eco+Park/@3.0045149,101.6004433,37590m/data=!3m1!1e3!4m7!3m6!1s0x31cc53d02a885e89:0xb4c6bccc8dce07ab!8m2!3d3.1074916!4d101.478077!15sCgtjYW5vcHkgY2x1YloNIgtjYW5vcHkgY2x1YpIBD3N3aW1taW5nX3NjaG9vbJoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNXZkMk13U2pGak1GSllUbGN4VFUxV1VUVlZNMWw2VTBaU1NsZ3dSUkFC4AEA-gEECAAQQw!16s%2Fg%2F11x5tx4xkx?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=f853ad18-f027-4e5a-9a27-43439552da51",
+    "resolvedOn": "2026-10-19"
+  },
   "https://maps.app.goo.gl/JATQ8u7RnD9KDU5A8": {
     "lat": 2.9974324,
     "lng": 101.7043065,
     "exact": true,
     "resolvedUrl": "https://www.google.com/maps/place/Kompleks+Tenis+UPM/@2.9974324,101.7017316,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdb57e45c93fdd:0x4960939a2d7d4e33!8m2!3d2.9974324!4d101.7043065!16s%2Fg%2F11c2jyqqv6?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=9b29c45c-b7d3-43bb-9025-6be761c2b025",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/LN1MvTpRBqKg2v4d7": {
+    "lat": 3.0941414,
+    "lng": 101.5743334,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Glenmarie+Golf+%26+Country+Club/@3.0941414,101.5717585,1175m/data=!3m2!1e3!4b1!4m6!3m5!1s0x31cc4c35e33c58e9:0xb726848f63ce49f!8m2!3d3.0941414!4d101.5743334!16zL20vMGZqYmc5?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=820f8496-45ec-47bd-9677-5869313ab94d",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/qzw4sutoF8JCpVDSA": {
+    "lat": 3.1704818,
+    "lng": 101.6929357,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/(KLIC)+Kuala+Lumpur+Indoor+Court/@3.1704818,101.6903608,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc492441d11551:0x18db471677bf6d1e!8m2!3d3.1704818!4d101.6929357!16s%2Fg%2F11zbm_zxfy?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=aa5348f1-8696-412a-9012-6ccf6010a111",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/ySk6jERFfNVjCK418": {
+    "lat": 3.1335863,
+    "lng": 101.6674503,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Kompleks+Sukan+Bangsar/@3.1335863,101.6648754,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc49a223691425:0x5bb589c83b901d41!8m2!3d3.1335863!4d101.6674503!16s%2Fg%2F1tx12wkr?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=edf46b75-4dd8-4099-8a11-3d34a964c364",
+    "resolvedOn": "2026-10-19"
+  },
+  "https://maps.app.goo.gl/YYupJyCyyLZ8dWiM9": {
+    "lat": 3.1383137,
+    "lng": 101.658771,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Bukit+Bandaraya+Community+Centre/@3.1383137,101.6561961,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc4909a4975643:0x150931c615be344b!8m2!3d3.1383137!4d101.658771!16s%2Fg%2F11bbrjpyzv?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=d5577a4f-7040-4abb-a281-7851dac49ed4",
     "resolvedOn": "2026-10-19"
   },
   "https://www.google.com/maps/place/Duta+International+Tennis+Academy+Sdn+Bhd/@3.171886,101.674666,17z/data=!3m1!4b1!4m6!3m5!1s0x31cc48682505ada9:0x8b8c8f1d08d7f509!8m2!3d3.171886!4d101.674666!16s%2Fg%2F11cls_560d": {

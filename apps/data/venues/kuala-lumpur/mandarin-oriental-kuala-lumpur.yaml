@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Mandarin Oriental Kuala Lumpur
+category: hotel
+operator: Mandarin Oriental, Kuala Lumpur
+website: https://www.mandarinoriental.com/en/kuala-lumpur/petronas-towers/wellness/fitness
+location:
+  address: Mandarin Oriental, Kuala Lumpur City Centre, 50088 Kuala Lumpur
+  state: kuala-lumpur
+  city: Kuala Lumpur
+  area: KLCC
+  googleMaps: https://maps.app.goo.gl/3Ab2oRU8rCwapPNLA
+courts:
+  - count: 1
+    surface: hard
+    covered: false
+    lit: "yes"
+    note: Outdoor hard court with lights for evening play.
+access:
+  type: open_premium
+  whoCanPlay: Hotel guests and members at lower rates; non-members can book at higher rates.
+  nonGuestBookable: "yes"
+booking:
+  channels:
+    - type: phone
+      label: Hotel
+      number: +60 3-2380 8888
+  note: Reserve via phone, mokul-reservations@mohg.com or Live Chat on hotel site.
+amenities:
+  parking: paid
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "no"
+  convenienceStore: "no"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+pricing:
+  day: 120
+  unit: hour
+  note:
+    "Non-member: RM120 first hour, RM80 each additional hour; member/hotel guest RM50/hour. Private
+    lesson RM240 (member)/RM320 (non-member) per hour. Inclusive of taxes."
+  observedOn: "2026-10-19"
+verified:
+  date: "2026-10-19"
+  source: official_site
+  note: All facts from hotel's own fitness/tennis page. Coordinates from OpenStreetMap (Nominatim).

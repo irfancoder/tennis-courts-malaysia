@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Canopy Club, Setia Eco Park
+category: club
+operator: Canopy Club
+location:
+  address: Canopy Club, Setia Eco Park, Setia Alam, Shah Alam, Selangor
+  state: selangor
+  city: Shah Alam
+  area: Setia Eco Park
+  googleMaps: https://maps.app.goo.gl/iuy9G79FgobHGVB47
+courts:
+  - count: 2
+    lit: "yes"
+    covered: false
+    surface: artificial_grass
+access:
+  type: membership
+  whoCanPlay: Canopy Club members only (per Courtsite notice).
+booking:
+  channels:
+    - type: app
+      label: Courtsite
+      url: https://www.courtsite.my/centre/Canopy%20Club%2C%20Setia%20Eco%20Park/cmkw5sy630ayi085doynl4rll
+      guide: courtsite
+  note: Courtsite booking is for Canopy Club members only.
+amenities:
+  parking: "free"
+  toilet: "yes"
+  shower: "yes"
+  surau: "yes"
+  waterFountain: "no"
+  vendingMachine: "yes"
+  convenienceStore: "yes"
+  seating: "no"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+verified:
+  date: "2026-10-19"
+  source: desk_research
+  note:
+    From the venue's Courtsite page (read 2026-10-19). Members-only notice and amenities. No tennis
+    pricing published. Coordinates from the Courtsite map link.

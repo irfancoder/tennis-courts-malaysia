@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Sri KDU International School, Kota Damansara
+category: school
+operator: Sri KDU International School
+location:
+  address: Sri KDU International School, 3, 5, 7, Jalan Teknologi 2/1, Taman Sains Selangor, Kota Damansara,
+    47810 Petaling Jaya, Selangor
+  state: selangor
+  city: Petaling Jaya
+  area: Kota Damansara
+  lat: 3.1497796
+  lng: 101.5752128
+courts:
+- count: 1
+access:
+  type: open_online
+  whoCanPlay: Anyone, outside school hours. Book on Courtsite.
+  publicWindow: Weekdays from 6pm; Saturdays from 1pm (per Courtsite pricing).
+booking:
+  channels:
+  - type: app
+    label: Courtsite
+    url: https://www.courtsite.my/centre/Sri%20KDU%20International%20School%2C%20Kota%20Damansara/clwj1akkd0huq08cxnh5q3b3w
+    guide: courtsite
+  note: Outdoor play stops when the school's lightning alarm is triggered.
+amenities:
+  parking: none
+  toilet: 'no'
+  shower: 'no'
+  surau: 'no'
+  waterFountain: 'no'
+  vendingMachine: 'no'
+  convenienceStore: 'no'
+  seating: 'no'
+  tennisWall: 'no'
+  ballMachine: 'no'
+  racquetRental: 'no'
+pricing:
+  day: 50
+  night: 50
+  unit: hour
+  note: 'RM50/hour: weekdays 6pm-1am, Saturday from 1pm to 1am.'
+  observedOn: '2026-10-19'
+verified:
+  date: '2026-10-19'
+  source: desk_research
+  note: From the venue's Courtsite page (read 2026-10-19). Court count, pricing, public window and lightning
+    rule. Coordinates from the Courtsite map link.
