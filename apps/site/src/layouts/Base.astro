@@ -22,6 +22,8 @@ const nav = [
   { href: "/about/", label: "About" },
 ];
 const analyticsToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+// Public, like the beacon token. data-domains below keeps local and preview visits out of the stats.
+const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? "1ec3c5ee-301e-4f6c-a496-62ba68d2b755";
 ---
 <!doctype html>
 <html lang="en-MY">
@@ -72,12 +74,18 @@ const analyticsToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         <div {...stylex.props(s.footerLinks)}>
           <a href="/suggest/" {...stylex.props(s.footerLink)}>Suggest a court or an edit</a>
           <a href="/about/" {...stylex.props(s.footerLink)}>How we check courts</a>
+          <a href="/privacy/" {...stylex.props(s.footerLink)}>Privacy</a>
+          <a href="/terms/" {...stylex.props(s.footerLink)}>Terms</a>
           <a href="https://irfanismail.com" {...stylex.props(s.footerLink)}>irfanismail.com</a>
         </div>
       </div>
     </footer>
     {analyticsToken && (
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: analyticsToken })} />
+    )}
+    {/* Query strings are dropped: Explore keeps "near me" coordinates in the URL. Searches and filters are sent as events. */}
+    {umamiId && (
+      <script defer src="https://cloud.umami.is/script.js" data-website-id={umamiId} data-domains="tennis.irfanismail.com" data-exclude-search="true" />
     )}
   </body>
 </html>

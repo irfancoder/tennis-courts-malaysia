@@ -662,6 +662,44 @@
       },
       "required": [],
       "additionalProperties": false
+    },
+    "stay": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partner": {
+            "enum": ["agoda", "booking"],
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": ["partner", "url", "label"],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "featured": {
+      "type": "object",
+      "properties": {
+        "sponsor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "until": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": ["sponsor", "until"],
+      "additionalProperties": false
     }
   },
   "required": ["name", "category", "location", "courts", "access", "booking", "verified"],

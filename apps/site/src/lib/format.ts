@@ -67,12 +67,44 @@ export function amenityList(a: Amenities): AmenityItem[] {
 
 /** Link target for a booking channel, or undefined when the channel happens in person. */
 export function channelHref(c: Channel): string | undefined {
-  if (c.url) return c.url;
+  if (c.url) return withRef(c.url);
   if (!c.number) return undefined;
   const digits = c.number.replace(/[^\d]/g, "");
   if (c.type === "whatsapp") return `https://wa.me/${digits}`;
   if (c.type === "phone") return `tel:+${digits}`;
   return undefined;
+}
+
+/**
+ * Commercial booking platforms that read UTM tags, so they can see the bookings we send them.
+ * Council and government portals are left out: unknown query params can break them.
+ */
+const REF_HOSTS = ["courtsite.my", "rezerv.co"];
+
+/** Tags a link to a known booking platform with our referral; any other link is returned as-is. */
+export function withRef(href: string): string {
+  let url: URL;
+  try {
+    url = new URL(href);
+  } catch {
+    return href;
+  }
+  const host = url.hostname.replace(/^www\./, "");
+  if (!REF_HOSTS.some((h) => host === h || host.endsWith(`.${h}`))) return href;
+  if (!url.searchParams.has("utm_source")) {
+    url.searchParams.set("utm_source", "tennis.irfanismail.com");
+    url.searchParams.set("utm_medium", "referral");
+  }
+  return url.toString();
+}
+
+/** Host without "www.", for analytics labels. */
+export function hostOf(href: string): string | undefined {
+  try {
+    return new URL(href).hostname.replace(/^www\./, "");
+  } catch {
+    return undefined;
+  }
 }
 
 /** Opens the venue's Google Maps place (with reviews and photos) when we have its link or Place ID. */

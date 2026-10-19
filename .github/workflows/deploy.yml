@@ -20,6 +20,8 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       PUBLIC_CF_BEACON_TOKEN: ${{ vars.PUBLIC_CF_BEACON_TOKEN }}
       PUBLIC_IMAGE_TRANSFORMS: ${{ vars.PUBLIC_IMAGE_TRANSFORMS }}
+      PUBLIC_UMAMI_SHARE_URL: ${{ vars.PUBLIC_UMAMI_SHARE_URL }}
+      PUBLIC_MONETISATION: ${{ vars.PUBLIC_MONETISATION }}
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6

@@ -1,0 +1,38 @@
+---
+// "Stay nearby" affiliate links. Renders nothing until monetisation is switched on.
+import * as stylex from "@stylexjs/stylex";
+import { PARTNER_LABEL, type Stay } from "@tennis/schema";
+import { monetisationOn } from "../lib/monetisation";
+import { EVENTS, trackAttrs } from "../lib/track";
+import { page } from "../styles/page.styles";
+import { s } from "./StayNearby.styles";
+
+interface Props {
+  stays: Stay[];
+  /** Venue or guide slug, for click reporting. */
+  from: string;
+}
+const { stays, from } = Astro.props;
+const show = monetisationOn && stays.length > 0;
+---
+{show && (
+  <section aria-labelledby="stay" {...stylex.props(s.box)}>
+    <h2 id="stay" {...stylex.props(page.h3)}>Stay nearby</h2>
+    <ul {...stylex.props(s.list)}>
+      {stays.map((stay) => (
+        <li>
+          <a
+            href={stay.url}
+            rel="sponsored noopener"
+            {...trackAttrs(EVENTS.affiliate, { partner: stay.partner, from, placement: "stay_nearby" })}
+            {...stylex.props(page.link)}
+          >
+            {stay.label}
+          </a>{" "}
+          <span {...stylex.props(page.muted)}>on {PARTNER_LABEL[stay.partner]}</span>
+        </li>
+      ))}
+    </ul>
+    <p {...stylex.props(s.disclosure)}>Affiliate links: this site may earn a commission if you book, at no extra cost to you. <a href="/privacy/" {...stylex.props(page.link)}>More</a></p>
+  </section>
+)}

@@ -1,4 +1,5 @@
 import * as v from "valibot";
+import { StaySchema } from "./venue";
 
 export const GUIDE_KINDS = ["booking-system", "access", "traveller"] as const;
 
@@ -17,6 +18,8 @@ export const GuideFrontmatterSchema = v.strictObject({
   ]),
   draft: v.optional(v.boolean(), false),
   order: v.optional(v.number(), 100),
+  /** Affiliate stays for traveller guides; hidden until monetisation is on. */
+  stay: v.optional(v.array(StaySchema), []),
 });
 
 export type GuideFrontmatter = v.InferOutput<typeof GuideFrontmatterSchema>;

@@ -15,20 +15,25 @@ import AccessBadge from "../../../../components/AccessBadge.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
 import CourtBand from "../../../../components/CourtBand.astro";
 import Facilities from "../../../../components/Facilities.astro";
+import FeaturedBadge from "../../../../components/FeaturedBadge.astro";
 import Notice from "../../../../components/Notice.astro";
 import Photos from "../../../../components/Photos.astro";
+import StayNearby from "../../../../components/StayNearby.astro";
 import Base from "../../../../layouts/Base.astro";
 import {
   amenityList,
   channelHref,
   directionsUrl,
   formatDate,
+  hostOf,
   mapsUrl,
   plural,
   rm,
   yesNo,
 } from "../../../../lib/format";
 import { getGuideMap } from "../../../../lib/guides";
+import { isFeatured } from "../../../../lib/monetisation";
+import { EVENTS, trackAttrs } from "../../../../lib/track";
 import { page } from "../../../../styles/page.styles";
 import { s } from "../../../../styles/venue.styles";
 
@@ -72,6 +77,9 @@ function courtLine(c: SiteVenue["courts"][number]): string {
   return `${c.count} ${kind} ${c.count === 1 ? "court" : "courts"}${lights}${c.note ? `. ${c.note}` : ""}`;
 }
 
+const at = { venue: v.slug, state: v.stateSlug };
+const featured = isFeatured(v.featured);
+
 const title = `${v.name} tennis courts`;
 const description = `${accessInfo.label}. ${plural(v.courtCount, "court")} in ${where}. How to book, prices and who can play at ${v.name}.`;
 const jsonLd = [
@@ -108,6 +116,7 @@ const jsonLd = [
   ]} />
   <CourtBand kicker={`${CATEGORY_LABEL[v.category]} in ${where}`} title={v.name}>
     {v.aliases.length > 0 && <p {...stylex.props(s.aliases)}>Also known as {v.aliases.join(", ")}</p>}
+    {featured && <FeaturedBadge />}
   </CourtBand>
 
   <div {...stylex.props(page.container)}>
@@ -136,7 +145,7 @@ const jsonLd = [
             {linked.length > 0 && (
               <div {...stylex.props(s.actions)}>
                 {linked.map((c, i) => (
-                  <a href={channelHref(c)} {...stylex.props(page.button, i > 0 && page.buttonSecondary)} rel={c.url ? "noopener" : undefined}>
+                  <a href={channelHref(c)} {...stylex.props(page.button, i > 0 && page.buttonSecondary)} rel={c.url ? "noopener" : undefined} {...trackAttrs(EVENTS.booking, { ...at, channel: c.type, host: c.url ? hostOf(c.url) : undefined })}>
                     {c.label ?? CHANNEL_LABEL[c.type]}
                   </a>
                 ))}
@@ -188,7 +197,7 @@ const jsonLd = [
             {v.access.whatToBring && <><dt {...stylex.props(s.dt)}>What to bring</dt><dd>{v.access.whatToBring}</dd></>}
             {v.access.dressCode && <><dt {...stylex.props(s.dt)}>Dress code</dt><dd>{v.access.dressCode}</dd></>}
             {v.operator && <><dt {...stylex.props(s.dt)}>Run by</dt><dd>{v.operator}</dd></>}
-            {v.website && <><dt {...stylex.props(s.dt)}>Website</dt><dd><a href={v.website} {...stylex.props(page.link)} rel="noopener">Official page</a></dd></>}
+            {v.website && <><dt {...stylex.props(s.dt)}>Website</dt><dd><a href={v.website} {...stylex.props(page.link)} rel="noopener" {...trackAttrs(EVENTS.website, at)}>Official page</a></dd></>}
           </dl>
         </section>
 
@@ -213,8 +222,8 @@ const jsonLd = [
             {v.location.nearestTransit && <><dt {...stylex.props(s.dt)}>Nearest station</dt><dd>{v.location.nearestTransit}</dd></>}
           </dl>
           <div {...stylex.props(s.actions, page.section)}>
-            <a href={directionsUrl(v.location)} {...stylex.props(page.button)} rel="noopener">Get directions</a>
-            <a href={mapsUrl(v.location)} {...stylex.props(page.button, page.buttonSecondary)} rel="noopener">Open in Google Maps</a>
+            <a href={directionsUrl(v.location)} {...stylex.props(page.button)} rel="noopener" {...trackAttrs(EVENTS.directions, at)}>Get directions</a>
+            <a href={mapsUrl(v.location)} {...stylex.props(page.button, page.buttonSecondary)} rel="noopener" {...trackAttrs(EVENTS.maps, at)}>Open in Google Maps</a>
           </div>
           {v.location.coordsApproximate && <p {...stylex.props(page.muted, page.section)}>The map pin is approximate.</p>}
         </section>
@@ -229,6 +238,7 @@ const jsonLd = [
             {v.playedHere.lastPlayed && <p>Last played {formatDate(v.playedHere.lastPlayed)}</p>}
           </section>
         )}
+        <StayNearby stays={v.stay} from={v.slug} />
         <section aria-labelledby="checked">
           <h2 id="checked" {...stylex.props(page.h3)}>How current is this?</h2>
           <p>Last checked {formatDate(v.verified.date)}. Source: {VERIFICATION_LABEL[v.verified.source].toLowerCase()}.</p>

@@ -5,10 +5,12 @@ import { getVenues } from "@tennis/data";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import CourtBand from "../../components/CourtBand.astro";
 import { mdxComponents } from "../../components/mdx";
+import StayNearby from "../../components/StayNearby.astro";
 import VenueList from "../../components/VenueList.astro";
 import Base from "../../layouts/Base.astro";
 import { formatDate } from "../../lib/format";
 import { type Guide, getGuides } from "../../lib/guides";
+import { monetisationOn } from "../../lib/monetisation";
 import { page } from "../../styles/page.styles";
 
 export async function getStaticPaths() {
@@ -41,6 +43,9 @@ const jsonLd = [
       <div><Content components={mdxComponents} /></div>
       <p {...stylex.props(page.muted)}>Updated {formatDate(guide.data.updated)}. Spotted something out of date? <a href="/suggest/" {...stylex.props(page.link)}>Let us know</a>.</p>
     </article>
+    {monetisationOn && guide.data.stay.length > 0 && (
+      <div {...stylex.props(page.section)}><StayNearby stays={guide.data.stay} from={guide.id} /></div>
+    )}
     {venues.length > 0 && (
       <section {...stylex.props(page.section)} aria-labelledby="venues">
         <h2 id="venues" {...stylex.props(page.h2)}>Courts that use this</h2>

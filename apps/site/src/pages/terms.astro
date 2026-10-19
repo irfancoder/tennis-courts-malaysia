@@ -1,0 +1,29 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { page } from "../styles/page.styles";
+---
+<Base title="Terms of use" description="How to use the information on this tennis court directory, and its limits.">
+  <CourtBand title="Terms of use" />
+  <div {...stylex.props(page.container)}>
+    <div {...stylex.props(page.prose, page.section)}>
+      <h2 {...stylex.props(page.h2)}>Information is a guide</h2>
+      <p>Listings are checked by hand and show when and how they were last checked, but courts change their prices, rules, hours and booking systems without notice. Always confirm with the venue before you go. This site isn't responsible for a wasted trip, a refused booking, or anything that happens at a venue.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Private courts</h2>
+      <p>A court being listed doesn't mean you can use it. Follow the access rules shown, and the venue's own rules. Never enter a condominium, club or hotel without permission.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Other sites</h2>
+      <p>This site links to booking portals, apps, maps and venue websites that it doesn't run. Bookings and payments are between you and that provider.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Affiliate links and sponsors</h2>
+      <p>Some links may be labelled affiliate links, which pay this site a commission at no extra cost to you. Labelled sponsors and featured listings are paid for. Payment never changes a court's access details or its place in the listings. See the <a href="/privacy/" {...stylex.props(page.link)}>privacy page</a> for more.</p>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Content</h2>
+      <p>Text and data on this site are © Irfan Ismail. Photos belong to the people credited. You're welcome to link to any page. Please don't copy listings in bulk.</p>
+
+      <p {...stylex.props(page.muted, page.section)}>Last updated 19 October 2026.</p>
+    </div>
+  </div>
+</Base>

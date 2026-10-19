@@ -4,6 +4,7 @@ import {
   CATEGORIES,
   CHANNELS,
   PARKING,
+  PARTNERS,
   PAYMENTS,
   STATE_SLUGS,
   STATUSES,
@@ -158,6 +159,22 @@ export const PhotoSchema = v.strictObject({
   consent: v.boolean(),
 });
 
+/** An affiliate link to book a stay at, or near, the venue. */
+export const StaySchema = v.strictObject({
+  partner: v.picklist(PARTNERS),
+  url: v.pipe(v.string(), v.url()),
+  /** What the link books, e.g. "Rooms at Sunway Resort Hotel". */
+  label: text,
+});
+
+/** A paid placement. It adds a labelled badge only; access details and listing order never change. */
+export const FeaturedSchema = v.strictObject({
+  /** Who paid, for our records and sponsor reporting. */
+  sponsor: text,
+  /** Last day of the placement. */
+  until: isoDate,
+});
+
 export const VenueSchema = v.strictObject({
   name: text,
   aliases: v.optional(v.array(text), []),
@@ -183,9 +200,12 @@ export const VenueSchema = v.strictObject({
       lastPlayed: v.optional(isoDate),
     }),
   ),
+  stay: v.optional(v.array(StaySchema), []),
+  featured: v.optional(FeaturedSchema),
 });
 
 export type VenueInput = v.InferInput<typeof VenueSchema>;
 export type Venue = v.InferOutput<typeof VenueSchema>;
 export type BookingChannel = v.InferOutput<typeof ChannelSchema>;
 export type Amenities = v.InferOutput<typeof AmenitiesSchema>;
+export type Stay = v.InferOutput<typeof StaySchema>;

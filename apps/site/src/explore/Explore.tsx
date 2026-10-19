@@ -12,7 +12,8 @@ import {
   SURFACES,
 } from "@tennis/schema";
 import { lazy, Suspense } from "preact/compat";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
+import { EVENTS, track } from "../lib/track";
 import { type Conn, connect, rows, type Stage } from "./duck";
 import { s } from "./explore.styles";
 import {
@@ -88,6 +89,27 @@ export default function Explore({ dataBase, tilesBase, places, staticListId }: P
     };
   }, [conn, filters, staticListId]);
 
+  // One event per settled search, not per keystroke; filters and queries are only sent when they change.
+  const sent = useRef({ q: "", filters: "" });
+  useEffect(() => {
+    if (!results) return;
+    const timer = setTimeout(() => {
+      const q = filters.q.trim().toLowerCase();
+      if (q && q !== sent.current.q) track(EVENTS.search, { query: q, results: results.length });
+      sent.current.q = q;
+      const active = activeFilters(filters);
+      if (active && active !== sent.current.filters)
+        track(EVENTS.filter, { filters: active, results: results.length });
+      sent.current.filters = active;
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [results, filters]);
+
+  function showView(next: "list" | "map") {
+    if (next !== view) track(EVENTS.view, { view: next });
+    setView(next);
+  }
+
   const set = <K extends keyof Filters>(key: K, value: Filters[K]) =>
     setFilters((f) => ({ ...f, [key]: value }));
 
@@ -98,6 +120,7 @@ export default function Explore({ dataBase, tilesBase, places, staticListId }: P
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setLocating(false);
+        track(EVENTS.nearMe, { granted: true });
         set("near", {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
@@ -106,6 +129,7 @@ export default function Explore({ dataBase, tilesBase, places, staticListId }: P
       },
       () => {
         setLocating(false);
+        track(EVENTS.nearMe, { granted: false });
         setError("Location access was blocked. Pick a place from the list instead.");
       },
       { enableHighAccuracy: false, timeout: 10_000 },
@@ -260,7 +284,7 @@ export default function Explore({ dataBase, tilesBase, places, staticListId }: P
                 <button
                   type="button"
                   aria-pressed={view === "list"}
-                  onClick={() => setView("list")}
+                  onClick={() => showView("list")}
                   {...stylex.props(s.tab, view === "list" && s.tabActive)}
                 >
                   List
@@ -268,7 +292,7 @@ export default function Explore({ dataBase, tilesBase, places, staticListId }: P
                 <button
                   type="button"
                   aria-pressed={view === "map"}
-                  onClick={() => setView("map")}
+                  onClick={() => showView("map")}
                   {...stylex.props(s.tab, view === "map" && s.tabActive)}
                 >
                   Map
@@ -301,6 +325,19 @@ export default function Explore({ dataBase, tilesBase, places, staticListId }: P
       </div>
     </div>
   );
+}
+
+/** Filters that differ from the defaults, e.g. "covered,near,region:klang_valley", or "" when none. */
+function activeFilters(f: Filters): string {
+  return (Object.keys(DEFAULT_FILTERS) as (keyof Filters)[])
+    .filter((k) => k !== "q" && f[k] !== DEFAULT_FILTERS[k])
+    .map((k) => {
+      const value = f[k];
+      if (k === "near" || value === true) return k;
+      return `${k}:${value}`;
+    })
+    .sort()
+    .join(",");
 }
 
 function ResultItem({ r }: { r: Result }) {

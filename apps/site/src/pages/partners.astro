@@ -1,0 +1,43 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { getVenues } from "@tennis/data";
+import CourtBand from "../components/CourtBand.astro";
+import Base from "../layouts/Base.astro";
+import { getGuides } from "../lib/guides";
+import { monetisationOn } from "../lib/monetisation";
+import { page } from "../styles/page.styles";
+
+const venues = getVenues();
+const states = new Set(venues.map((v) => v.stateName)).size;
+const guides = (await getGuides()).length;
+// Umami's public share link, so partners always see current numbers without a manual update.
+const statsUrl = import.meta.env.PUBLIC_UMAMI_SHARE_URL;
+---
+<Base title="Work with us" description="Reach tennis players in Malaysia: who uses this court directory, and the sponsorship and listing options." noindex={!monetisationOn}>
+  <CourtBand title="Work with us" lead="Reach people who are about to book a tennis court in Malaysia." />
+  <div {...stylex.props(page.container)}>
+    <div {...stylex.props(page.prose, page.section)}>
+      <h2 {...stylex.props(page.h2)}>Who uses this site</h2>
+      <p>Players looking for a court to book: locals in the Klang Valley, people who have just moved here, and visitors who want a game while they travel. Most arrive from search, ready to book.</p>
+      <ul>
+        <li>{venues.length} courts checked by hand across {states} {states === 1 ? "state" : "states"}</li>
+        <li>{guides} step-by-step guides to council and club booking systems</li>
+        <li>Every listing dated and re-checked at least once a year</li>
+      </ul>
+      {statsUrl && (
+        <p><a href={statsUrl} rel="noopener" {...stylex.props(page.link)}>See live visitor numbers</a>: visits, top pages, countries, and how many people tap through to book.</p>
+      )}
+
+      <h2 {...stylex.props(page.h2, page.section)}>Ways to work together</h2>
+      <ul>
+        <li><strong>Hotels and resorts with courts:</strong> a "Stay nearby" link on your court's page and in travel guides.</li>
+        <li><strong>Academies, coaches and commercial courts:</strong> a labelled featured placement on your listing.</li>
+        <li><strong>Gear brands and stringers:</strong> sponsor a guide or a city's court pages.</li>
+      </ul>
+
+      <h2 {...stylex.props(page.h2, page.section)}>Ground rules</h2>
+      <p>Players trust this site because it's accurate. So paid placements are always labelled, and payment never changes a court's access details, prices, or its place in any list. Public courts are never pushed down to make room for a sponsor.</p>
+
+    </div>
+  </div>
+</Base>
