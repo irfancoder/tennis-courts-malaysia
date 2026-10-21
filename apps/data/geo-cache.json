@@ -69,6 +69,13 @@
     "resolvedUrl": "https://www.google.com/maps/place/Bayan+Club+Seri+Kembangan/@3.0147802,101.6915725,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdb542963fd837:0x80c0162556250a35!8m2!3d3.0147802!4d101.6941474!16s%2Fg%2F11g9qn0sbq?entry=tts&g_ep=EgoyMDI2MTAxMy4wIPu8ASoASAFQAw%3D%3D&skid=0df2c68a-d0ad-4c28-b0ed-c42e9e12496d",
     "resolvedOn": "2026-10-19"
   },
+  "https://maps.app.goo.gl/iRqJtxHZCwQ2aXrX7": {
+    "lat": 2.941614,
+    "lng": 101.6879054,
+    "exact": true,
+    "resolvedUrl": "https://www.google.com/maps/place/Tennis+Court+Puspanita/@2.941614,101.6853305,1175m/data=!3m2!1e3!4b1!4m6!3m5!1s0x31cdb613bd59137d:0xceac30e788cd4c31!8m2!3d2.941614!4d101.6879054!16s%2Fg%2F11g7cw3377?entry=tts&g_ep=EgoyMDI2MTAxOC4wIPu8ASoASAFQAw%3D%3D&skid=00b97e33-5e08-4d1c-8147-9e11dce581b3",
+    "resolvedOn": "2026-10-21"
+  },
   "https://maps.app.goo.gl/iuy9G79FgobHGVB47": {
     "lat": 3.1074916,
     "lng": 101.478077,
