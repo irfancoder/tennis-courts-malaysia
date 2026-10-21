@@ -36,13 +36,17 @@ hours: Bookable slots 8am-12am
 amenities:
   parking: free
   toilet: "yes"
+  shower: "no"
+  surau: "no"
+  waterFountain: "no"
   vendingMachine:
     value: "yes"
     note: Cash only.
-  seating:
-    value: "yes"
-    note: Shaded seating.
+  convenienceStore: "no"
+  seating: "yes"
+  tennisWall: "no"
   ballMachine: "no"
+  racquetRental: "no"
 verified:
   date: 2026-10-21
   source: visited
