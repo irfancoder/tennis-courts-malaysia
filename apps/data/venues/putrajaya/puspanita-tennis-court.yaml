@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=../../schema/venue.schema.json
+name: Puspanita Tennis Court
+aliases:
+  - Gelanggang Tenis Puspanitapuri
+  - Gelanggang Sukan Puspanitapuri
+category: club
+operator: PUSPANITA Kebangsaan
+website: https://gelanggang.puspanita.org.my/Web/
+location:
+  address: Puspanitapuri, Jalan P10/1, Presint 10, Putrajaya
+  state: putrajaya
+  city: Putrajaya
+  area: Presint 10
+  googleMaps: https://maps.app.goo.gl/iRqJtxHZCwQ2aXrX7
+courts:
+  - count: 1
+    surface: hard
+    covered: false
+    lit: "yes"
+access:
+  type: open_online
+  whoCanPlay: Anyone with an e-Gelanggang account. Bookings need approval from Puspanita.
+booking:
+  channels:
+    - type: portal
+      label: e-Gelanggang Puspanita
+      url: https://gelanggang.puspanita.org.my/Web/
+  steps:
+    - Register an account on e-Gelanggang (name, email, phone, organisation).
+    - Book a slot on Gelanggang Tenis in the schedule.
+    - Wait for Puspanita to approve the booking.
+  requiresMyKad: unknown
+  requiresLocalNumber: unknown
+  foreignerFriendly: unknown
+hours: Bookable slots 8am-12am
+amenities:
+  parking: free
+  toilet: "yes"
+  shower: "no"
+  surau: "no"
+  waterFountain: "no"
+  vendingMachine:
+    value: "yes"
+    note: Cash only.
+  convenienceStore: "no"
+  seating: "yes"
+  tennisWall: "no"
+  ballMachine: "no"
+  racquetRental: "no"
+verified:
+  date: 2026-10-21
+  source: visited
+  by: Irfan
+  note: >-
+    Court, amenities and booking portal from Irfan, who has played here. Irfan also reported a changing
+    room. Approval step and slot hours from the public e-Gelanggang schedule. Rates sit behind the
+    portal login and are not recorded yet.
+playedHere: {}
